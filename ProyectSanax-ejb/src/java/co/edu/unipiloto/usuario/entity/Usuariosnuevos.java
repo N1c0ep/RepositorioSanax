@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuariosnuevos.findByCorreo", query = "SELECT u FROM Usuariosnuevos u WHERE u.correo = :correo")
     , @NamedQuery(name = "Usuariosnuevos.findByFecha", query = "SELECT u FROM Usuariosnuevos u WHERE u.fecha = :fecha")
     , @NamedQuery(name = "Usuariosnuevos.findByLocalidad", query = "SELECT u FROM Usuariosnuevos u WHERE u.localidad = :localidad")
-    , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")})
+    , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")
+    , @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena")})
 public class Usuariosnuevos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,6 +67,9 @@ public class Usuariosnuevos implements Serializable {
     @Size(max = 15)
     @Column(name = "TELEFONO")
     private String telefono;
+    @Size(max = 50)
+    @Column(name = "CONTRASENA")
+    private String contrasena;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosnuevos")
     private Collection<Cita> citaCollection;
 
@@ -76,7 +80,7 @@ public class Usuariosnuevos implements Serializable {
         this.id = id;
     }
 
-    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String telefono) {
+    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String telefono,String contrasena) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -84,6 +88,7 @@ public class Usuariosnuevos implements Serializable {
         this.fecha = fecha;
         this.localidad = localidad;
         this.telefono = telefono;
+        this.contrasena=contrasena;
     }
 
     public Integer getId() {
@@ -102,6 +107,14 @@ public class Usuariosnuevos implements Serializable {
         this.nombre = nombre;
     }
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    
     public String getApellido() {
         return apellido;
     }

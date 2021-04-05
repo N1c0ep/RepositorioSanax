@@ -56,6 +56,7 @@ public class userInfo extends HttpServlet {
             String correo = request.getParameter("email");
             String telefono = request.getParameter("telephone");
             String Fechanacimiento = request.getParameter("birth");
+            String contrasena = request.getParameter("contra");
             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
             convertido = fechaHora.parse(Fechanacimiento);
             
@@ -65,7 +66,7 @@ public class userInfo extends HttpServlet {
                 id = Integer.parseInt(idStr);
             }
             
-            Usuariosnuevos user = new Usuariosnuevos(id,firstName,lastName,correo,convertido,localidad,telefono);
+            Usuariosnuevos user = new Usuariosnuevos(id,firstName,lastName,correo,convertido,localidad,telefono,contrasena);
             
             if (request.getParameter("action").equals("Add")) {
                 usuariosnuevosFacade.create(user);

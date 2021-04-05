@@ -39,6 +39,10 @@
                     <td><input type="text" name="telephone" value="${user.telephone}" /></td>
                 </tr>
                 <tr>
+                    <td>Contraseña</td>
+                    <td><input type="password" name="contra" value="${user.contra}" /></td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
                         <input type="submit" name="action" value="Next" />
