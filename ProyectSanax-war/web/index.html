@@ -6,11 +6,40 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Sanax</title>
         <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="0; url=http://localhost:8080/ProyectSanax-war/userInfo.jsp" />
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Bienvenido a Sanax</h1>
+        <form action="./registroInfo" method="POST">
+            <table>
+                <tr>
+                    <td>Id usuario</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td>Correo</td>
+                    <td><input type="text" name="email"/></td>
+                </tr>
+                <tr>
+                    <td>Contraseña</td>
+                    <td><input type="password" name="contra" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="action" value="Continuar" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <form action="./registroInfo" method="POST">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="action" value="Login" />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

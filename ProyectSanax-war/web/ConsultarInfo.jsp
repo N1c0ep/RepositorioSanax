@@ -6,12 +6,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar cita</title>
     </head>
-    <body>
+    <body>  
         <h1>Buscar cita</h1>
         <form action="./ConsuInf" method="POST">
             <table>           
@@ -23,13 +24,22 @@
                     <td>ponga su id de usuario</td>
                     <td><input type="text" name="id" value="${consu.id}" /></td>
                 </tr>
-                <tr>
+                <tr>                   
                     <td colspan="2">
                         <input type="submit" name="action" value="Search" />
                     </td>
-                </tr>  
-            </table> 
+                </tr>               
+            </table>
         </form> 
+                
+        <form action="./CancCitaInfo" method="POST">
+            <table>
+                <td colspan="2">
+                    <input type="submit" name="action" value="Cancelar" />
+                </td>
+            </table>
+        </form>
+                
         <br>  
         <h1>Citas disponibles</h1>
         <table border = "1">                  

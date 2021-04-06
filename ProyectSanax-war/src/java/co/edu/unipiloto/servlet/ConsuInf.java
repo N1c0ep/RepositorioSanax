@@ -63,7 +63,7 @@ public class ConsuInf extends HttpServlet {
             if (request.getParameter("action").equals("Search")) {
                 citaFacade.consultarCita(pk);
             }
-            
+                
             //Poner boton cancelar e ir a menu con un form que solo contenga las 2 clases de cancelar y menu
             
             request.setAttribute("buscarCita", pk);
