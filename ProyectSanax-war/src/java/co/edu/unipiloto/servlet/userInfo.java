@@ -53,10 +53,12 @@ public class userInfo extends HttpServlet {
             String firstName = request.getParameter("firstname");
             String lastName = request.getParameter("lastname");           
             String localidad = request.getParameter("location");
+            String direccion = request.getParameter("direccion");
             String correo = request.getParameter("email");
             String telefono = request.getParameter("telephone");
             String Fechanacimiento = request.getParameter("birth");
             String contrasena = request.getParameter("contra");
+            String tipo = request.getParameter("tipo");
             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
             convertido = fechaHora.parse(Fechanacimiento);
             
@@ -66,7 +68,7 @@ public class userInfo extends HttpServlet {
                 id = Integer.parseInt(idStr);
             }
             
-            Usuariosnuevos user = new Usuariosnuevos(id,firstName,lastName,correo,convertido,localidad,telefono,contrasena);
+            Usuariosnuevos user = new Usuariosnuevos(id,firstName,lastName,correo,convertido,localidad,telefono,contrasena,tipo, direccion);
             
             if (request.getParameter("action").equals("Add")) {
                 usuariosnuevosFacade.create(user);

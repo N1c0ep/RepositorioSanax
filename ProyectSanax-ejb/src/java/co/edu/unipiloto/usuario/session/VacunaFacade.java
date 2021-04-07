@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.usuario.session;
 
-import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Vacuna;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author jorge_j3qr4sd
  */
 @Stateless
-public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal {
+public class VacunaFacade extends AbstractFacade<Vacuna> implements VacunaFacadeLocal {
 
     @PersistenceContext(unitName = "UsuarioPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
         return em;
     }
 
-    public CitaFacade() {
-        super(Cita.class);
+    public VacunaFacade() {
+        super(Vacuna.class);
     }
     
 }

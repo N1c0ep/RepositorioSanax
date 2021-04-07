@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.usuario.session;
 
-import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Sitio;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author jorge_j3qr4sd
  */
 @Local
-public interface CitaFacadeLocal {
+public interface SitioFacadeLocal {
 
-    void create(Cita cita);
+    void create(Sitio sitio);
 
-    void edit(Cita cita);
+    void edit(Sitio sitio);
 
-    void remove(Cita cita);
+    void remove(Sitio sitio);
 
-    Cita find(Object id);
+    Sitio find(Object id);
 
-    List<Cita> findAll();
+    List<Sitio> findAll();
 
-    List<Cita> findRange(int[] range);
+    List<Sitio> findRange(int[] range);
 
     int count();
     

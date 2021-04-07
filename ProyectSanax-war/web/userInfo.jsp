@@ -43,6 +43,17 @@
                     <td><input type="password" name="contra" value="${user.contra}" /></td>
                 </tr>
                 <tr>
+                    <td>Tipo documento</td>
+                <select name="tipo" value="${user.tipo}">
+                    <option>Cedula de ciudadania</option>
+                    <option>Tarjeta de identidad</option>
+                </select>
+                </tr>
+                <tr>
+                    <td>Dirección</td>
+                    <td><input type="text" name="direccion" value="${user.direccion}" /></td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
                         <input type="submit" name="action" value="Next" />

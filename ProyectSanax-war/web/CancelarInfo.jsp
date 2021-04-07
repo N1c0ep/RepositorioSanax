@@ -16,11 +16,7 @@
         <form action="./CancCitaInfo" method="POST">
             <table>
                 <tr>
-                    <td>Cancelar, ponga el id de la cita</td>
-                    <td><input type="text" name="buscar" value="${cance.buscar}" /></td>
-                </tr>
-                <tr>
-                    <td>ponga su id de usuario</td>
+                    <td>Cancelar, ponga el id del usuario</td>
                     <td><input type="text" name="id" value="${cance.id}" /></td>
                 </tr>
                 <tr>

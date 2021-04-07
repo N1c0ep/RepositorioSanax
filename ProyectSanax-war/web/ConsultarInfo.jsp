@@ -17,10 +17,6 @@
         <form action="./ConsuInf" method="POST">
             <table>           
                 <tr>
-                    <td>Consultar, ponga el id de la cita</td>
-                    <td><input type="text" name="buscar" value="${consu.buscar}" /></td>
-                </tr>
-                <tr>
                     <td>ponga su id de usuario</td>
                     <td><input type="text" name="id" value="${consu.id}" /></td>
                 </tr>

@@ -6,7 +6,6 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
-import co.edu.unipiloto.usuario.entity.CitaPK;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,30 +43,27 @@ public class CancCitaInfo extends HttpServlet {
             
             String action = request.getParameter("action");
             
-            String buscarStr = request.getParameter("buscar");
             String idStr = request.getParameter("id");
-            Integer buscar = 0;
             Integer id = 0;
             
-            
-            if (buscarStr != null && !buscarStr.equals("")) {
-                buscar = Integer.parseInt(buscarStr);
-            }
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
             
-            CitaPK pk;
+            Cita cita = null;
+            
+            for (Cita c : citaFacade.findAll()) {
+                if (c.getIdentificacion().getId()==id) {
+                    cita=c;
+                }
+            }
             
             if (request.getParameter("action").equals("Delete")) {
-                    citaFacade.remove(citaFacade.consultarCita(pk = new CitaPK(buscar,id)));
-                    mostrarMenu(out);
-            }else if(request.getParameter("action").equals("Search"))
-            {
-                citaFacade.consultarCita(pk = new CitaPK(buscar,id));
+                citaFacade.remove(cita);
                 mostrarMenu(out);
-            }else if (request.getParameter("action").equals("Cancelar")) {
-                mostrarMenu2(out);
+            }else if(request.getParameter("action").equals("Search"))
+            {   citaFacade.find(cita.getIdCita());
+                mostrarMenu(out);
             }
             
         }
@@ -126,18 +122,5 @@ public class CancCitaInfo extends HttpServlet {
             out.println("</html>");
   }
     
-    public void mostrarMenu2(PrintWriter out){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet userInfo</title>");           
-            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/CancelarInfo.jsp\" />");
-            out.println("</head>");
-            out.println("<body>");
-            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
-            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
-            out.println("</body>");
-            out.println("</html>");
-  }
    
 }

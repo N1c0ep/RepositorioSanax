@@ -6,9 +6,12 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -26,79 +29,60 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c")
-    , @NamedQuery(name = "Cita.findByIdcita", query = "SELECT c FROM Cita c WHERE c.citaPK.idcita = :idcita")
-    , @NamedQuery(name = "Cita.findByFase", query = "SELECT c FROM Cita c WHERE c.fase = :fase")
-    , @NamedQuery(name = "Cita.findByHora", query = "SELECT c FROM Cita c WHERE c.hora = :hora")
+    , @NamedQuery(name = "Cita.findByIdCita", query = "SELECT c FROM Cita c WHERE c.idCita = :idCita")
     , @NamedQuery(name = "Cita.findByFecha", query = "SELECT c FROM Cita c WHERE c.fecha = :fecha")
-    , @NamedQuery(name = "Cita.findByIdUser", query = "SELECT c FROM Cita c WHERE c.citaPK.idUser = :idUser")})
+    , @NamedQuery(name = "Cita.findByHora", query = "SELECT c FROM Cita c WHERE c.hora = :hora")
+    , @NamedQuery(name = "Cita.findByFase", query = "SELECT c FROM Cita c WHERE c.fase = :fase")})
 public class Cita implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected CitaPK citaPK;
-    @Column(name = "FASE")
-    private Integer fase;
-//    @Column(name = "IDCITA")
-//    private Integer idcita;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_CITA")
+    private Integer idCita;
+    @Size(max = 50)
+    @Column(name = "FECHA")
+    private String fecha;
     @Size(max = 50)
     @Column(name = "HORA")
     private String hora;
     @Size(max = 50)
-    @Column(name = "FECHA")
-    private String fecha;
-    @JoinColumn(name = "ID_USER", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Usuariosnuevos usuariosnuevos;
+    @Column(name = "FASE")
+    private String fase;
+    @JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO")
+    @ManyToOne
+    private Sitio idSitio;
+    @JoinColumn(name = "IDENTIFICACION", referencedColumnName = "ID")
+    @ManyToOne
+    private Usuariosnuevos identificacion;
 
     public Cita() {
     }
 
-    public Cita(CitaPK citaPK) {
-        this.citaPK = citaPK;
+    public Cita(Integer idCita) {
+        this.idCita = idCita;
     }
 
-    public Cita(Integer idcita,Integer fase, String hora, String fecha, Integer iduser) {
-        this.fase = fase;
-        this.hora = hora;
+    public Cita(Integer iduser, String fecha, String hora, String fase, Integer idsitio) {
         this.fecha = fecha;
-//        this.idcita= idcita;
-        this.usuariosnuevos=new Usuariosnuevos(iduser);
-    }
-
-//    public Integer getIdcita() {
-//        return idcita;
-//    }
-//
-//    public void setIdcita(Integer idcita) {
-//        this.idcita = idcita;
-//    }
-
-    public Cita(int idcita, int idUser) {
-        this.citaPK = new CitaPK(idcita, idUser);
-    }
-
-    public CitaPK getCitaPK() {
-        return citaPK;
-    }
-
-    public void setCitaPK(CitaPK citaPK) {
-        this.citaPK = citaPK;
-    }
-
-    public Integer getFase() {
-        return fase;
-    }
-
-    public void setFase(Integer fase) {
-        this.fase = fase;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
         this.hora = hora;
+        this.fase = fase;
+        this.identificacion= new Usuariosnuevos(iduser);
+        this.idSitio=new Sitio(idsitio);
+    }
+    
+    public Cita(Integer idCita, Usuariosnuevos identificacion) {
+        this.idCita = idCita;
+        this.identificacion = identificacion;
+    }
+
+    public Integer getIdCita() {
+        return idCita;
+    }
+
+    public void setIdCita(Integer idCita) {
+        this.idCita = idCita;
     }
 
     public String getFecha() {
@@ -109,18 +93,42 @@ public class Cita implements Serializable {
         this.fecha = fecha;
     }
 
-    public Usuariosnuevos getUsuariosnuevos() {
-        return usuariosnuevos;
+    public String getHora() {
+        return hora;
     }
 
-    public void setUsuariosnuevos(Usuariosnuevos usuariosnuevos) {
-        this.usuariosnuevos = usuariosnuevos;
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getFase() {
+        return fase;
+    }
+
+    public void setFase(String fase) {
+        this.fase = fase;
+    }
+
+    public Sitio getIdSitio() {
+        return idSitio;
+    }
+
+    public void setIdSitio(Sitio idSitio) {
+        this.idSitio = idSitio;
+    }
+
+    public Usuariosnuevos getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(Usuariosnuevos identificacion) {
+        this.identificacion = identificacion;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (citaPK != null ? citaPK.hashCode() : 0);
+        hash += (idCita != null ? idCita.hashCode() : 0);
         return hash;
     }
 
@@ -131,7 +139,7 @@ public class Cita implements Serializable {
             return false;
         }
         Cita other = (Cita) object;
-        if ((this.citaPK == null && other.citaPK != null) || (this.citaPK != null && !this.citaPK.equals(other.citaPK))) {
+        if ((this.idCita == null && other.idCita != null) || (this.idCita != null && !this.idCita.equals(other.idCita))) {
             return false;
         }
         return true;
@@ -139,7 +147,7 @@ public class Cita implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.unipiloto.usuario.entity.Cita[ citaPK=" + citaPK + " ]";
+        return "co.edu.unipiloto.usuario.entity.Cita[ idCita=" + idCita + " ]";
     }
     
 }

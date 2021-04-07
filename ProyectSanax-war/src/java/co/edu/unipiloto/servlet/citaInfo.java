@@ -41,36 +41,26 @@ public class citaInfo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");
-            
-            String idStr = request.getParameter("id");
+            String action = request.getParameter("action");          
             String faseStr = request.getParameter("fase");
             String fechaStr = request.getParameter("fecha");
             String horaStr = request.getParameter("hora");
             String iduserStr = request.getParameter("iduser");
             
-            Integer id = 0;
-            Integer fase = 0;
             Integer iduser=0;
             
-            if (idStr != null && !idStr.equals("")) {
-                id = Integer.parseInt(idStr);
-            }
-            if (faseStr != null && !faseStr.equals("")) {
-                fase = Integer.parseInt(faseStr);
-            }
             if (iduserStr != null && !iduserStr.equals("")) {
                 iduser = Integer.parseInt(iduserStr);
             }
             
-            System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
+           // System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
             
-            //Cita nuevcita = new Cita (id,fase,horaStr,fechaStr,iduser);
+            Cita cita = new Cita (iduser,fechaStr,horaStr,faseStr, 1);
             
             //System.out.println(nuevcita.getFase()+" "+nuevcita.getFecha()+" "+ nuevcita.getHora()+" "+ nuevcita.getIdcita());
             
             if (request.getParameter("action").equals("Add")) {
-                citaFacade.insertarCita(id,fase,horaStr,fechaStr,iduser);
+                citaFacade.create(cita);
             }
             
             out.println("<!DOCTYPE html>");

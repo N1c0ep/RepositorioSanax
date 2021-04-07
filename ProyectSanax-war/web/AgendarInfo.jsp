@@ -10,13 +10,12 @@
         <h1>Agendar cita</h1>
         <form action="./citaInfo" method="POST">
             <table>
-                <tr>
-                    <td>Id</td>
-                    <td><input type="text" name="id" value="${asig.idcita}" /></td>
-                </tr>
-                <tr>
-                    <td>Fase</td>
-                    <td><input type="text" name="fase" value="${asig.fase}" /></td>
+                <tr>                  
+                        <td>Fase</td>
+                    <select name="fase" value="${asig.fase}">
+                        <option>Fase 1</option>
+                        <option>Fase 2</option>
+                    </select> 
                 </tr>
                 <tr>
                     <td>Fecha</td>

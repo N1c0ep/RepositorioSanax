@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.servlet;
 
-import co.edu.unipiloto.usuario.entity.CitaPK;
+import co.edu.unipiloto.usuario.entity.Cita;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,29 +44,28 @@ public class ConsuInf extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String action = request.getParameter("action");           
-            String buscarStr = request.getParameter("buscar");
             String idStr = request.getParameter("id");
-            Integer buscar = 0;
             Integer id = 0;
             
-            
-            if (buscarStr != null && !buscarStr.equals("")) {
-                buscar = Integer.parseInt(buscarStr);
-            }
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
             
-            CitaPK pk = new CitaPK(buscar,id);
-            System.out.println(id + " " + buscar);
+            Cita cita= null;
+                
+            for (Cita c : citaFacade.findAll()) {
+                if (c.getIdentificacion().getId()==id) {
+                    cita=c;
+                }
+            }
              
             if (request.getParameter("action").equals("Search")) {
-                citaFacade.consultarCita(pk);
+                citaFacade.find(cita.getIdCita());
             }
                 
             //Poner boton cancelar e ir a menu con un form que solo contenga las 2 clases de cancelar y menu
             
-            request.setAttribute("buscarCita", pk);
+            request.setAttribute("buscarCita", cita);
             //request.setAttribute("row", citaFacade.findAll());
             request.getRequestDispatcher("ConsultarInfo.jsp").forward(request,response);
             

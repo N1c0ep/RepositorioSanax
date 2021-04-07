@@ -28,4 +28,5 @@ public class UsuariosnuevosFacade extends AbstractFacade<Usuariosnuevos> impleme
     public UsuariosnuevosFacade() {
         super(Usuariosnuevos.class);
     }
+    
 }

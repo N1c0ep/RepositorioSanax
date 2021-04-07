@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -40,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuariosnuevos.findByFecha", query = "SELECT u FROM Usuariosnuevos u WHERE u.fecha = :fecha")
     , @NamedQuery(name = "Usuariosnuevos.findByLocalidad", query = "SELECT u FROM Usuariosnuevos u WHERE u.localidad = :localidad")
     , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")
-    , @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena")})
+    , @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena")
+    , @NamedQuery(name = "Usuariosnuevos.findByTipoDocumento", query = "SELECT u FROM Usuariosnuevos u WHERE u.tipoDocumento = :tipoDocumento")
+, @NamedQuery(name = "Usuariosnuevos.findByTipoDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion")})
 public class Usuariosnuevos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,7 +71,13 @@ public class Usuariosnuevos implements Serializable {
     @Size(max = 50)
     @Column(name = "CONTRASENA")
     private String contrasena;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosnuevos")
+    @Size(max = 50)
+    @Column(name = "DIRECCION")
+    private String direccion;
+    @Size(max = 50)
+    @Column(name = "TIPO_DOCUMENTO")
+    private String tipoDocumento;
+    @OneToMany(mappedBy = "identificacion")
     private Collection<Cita> citaCollection;
 
     public Usuariosnuevos() {
@@ -80,7 +87,7 @@ public class Usuariosnuevos implements Serializable {
         this.id = id;
     }
 
-    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String telefono,String contrasena) {
+    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String telefono, String contrasena, String tipoDocumento, String direccion ) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -88,7 +95,9 @@ public class Usuariosnuevos implements Serializable {
         this.fecha = fecha;
         this.localidad = localidad;
         this.telefono = telefono;
-        this.contrasena=contrasena;
+        this.contrasena = contrasena;
+        this.tipoDocumento = tipoDocumento;
+        this.direccion=direccion;
     }
 
     public Integer getId() {
@@ -103,18 +112,18 @@ public class Usuariosnuevos implements Serializable {
         return nombre;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    
     public String getApellido() {
         return apellido;
     }
@@ -153,6 +162,22 @@ public class Usuariosnuevos implements Serializable {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     @XmlTransient
