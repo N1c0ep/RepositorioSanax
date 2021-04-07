@@ -32,6 +32,7 @@
             <table>
                 <td colspan="2">
                     <input type="submit" name="action" value="Cancelar" />
+                    <input type="submit" name="action" value="Menu" />
                 </td>
             </table>
         </form>

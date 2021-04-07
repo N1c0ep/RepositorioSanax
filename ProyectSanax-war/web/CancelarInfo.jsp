@@ -16,12 +16,15 @@
         <form action="./CancCitaInfo" method="POST">
             <table>
                 <tr>
-                    <td>Cancelar, ponga el id del usuario</td>
+                    <td>Id del usuario</td>
                     <td><input type="text" name="id" value="${cance.id}" /></td>
                 </tr>
                 <tr>
+                    <td>Id de la cita</td>
+                    <td><input type="text" name="cita" value="${cance.cita}" /></td>
+                </tr>
+                <tr>
                     <td colspan="2">
-                        <input type="submit" name="action" value="Search" />
                         <input type="submit" name="action" value="Delete" />
                     </td>
                 </tr>

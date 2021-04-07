@@ -42,18 +42,22 @@ public class CancCitaInfo extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String action = request.getParameter("action");
-            
+            String citaidStr = request.getParameter("cita");
             String idStr = request.getParameter("id");
             Integer id = 0;
+            Integer citaid = 0;
             
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
+            }
+            if (citaidStr != null && !citaidStr.equals("")) {
+                citaid = Integer.parseInt(citaidStr);
             }
             
             Cita cita = null;
             
             for (Cita c : citaFacade.findAll()) {
-                if (c.getIdentificacion().getId()==id) {
+                if (c.getIdentificacion().getId()==id && c.getIdCita()==citaid) {
                     cita=c;
                 }
             }
@@ -61,8 +65,9 @@ public class CancCitaInfo extends HttpServlet {
             if (request.getParameter("action").equals("Delete")) {
                 citaFacade.remove(cita);
                 mostrarMenu(out);
-            }else if(request.getParameter("action").equals("Search"))
-            {   citaFacade.find(cita.getIdCita());
+            }else if(request.getParameter("action").equals("Cancelar")){   
+                mostrarMenu2(out);
+            }else if(request.getParameter("action").equals("Menu")){   
                 mostrarMenu(out);
             }
             
@@ -114,6 +119,20 @@ public class CancCitaInfo extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet userInfo</title>");           
             out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
+            out.println("</head>");
+            out.println("<body>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
+            out.println("</body>");
+            out.println("</html>");
+  }
+    
+     public void mostrarMenu2(PrintWriter out){
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/CancelarInfo.jsp\" />");
             out.println("</head>");
             out.println("<body>");
             //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
