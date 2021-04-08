@@ -9,6 +9,7 @@ import co.edu.unipiloto.usuario.entity.Cita;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,22 +52,25 @@ public class ConsuInf extends HttpServlet {
                 id = Integer.parseInt(idStr);
             }
             
+           
             Cita cita= null;
                 
             for (Cita c : citaFacade.findAll()) {
                 if (c.getIdentificacion().getId()==id) {
                     cita=c;
+                    
                 }
             }
-             
-            if (request.getParameter("action").equals("Search")) {
-                citaFacade.find(cita.getIdCita());
-            }
-                
-            //Poner boton cancelar e ir a menu con un form que solo contenga las 2 clases de cancelar y menu
             
-            request.setAttribute("buscarCita", cita);
-            //request.setAttribute("row", citaFacade.findAll());
+            
+             //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
+             //Fase 1 2021-04-13 2 11:42
+//            if (request.getParameter("action").equals("Search")) {
+//                citaFacade.find(cita.getIdCita());
+//            }
+            ArrayList<Cita> lista= new ArrayList<Cita>() ;
+                       lista.add(cita);
+            request.setAttribute("rows", lista);
             request.getRequestDispatcher("ConsultarInfo.jsp").forward(request,response);
             
             out.println("<!DOCTYPE html>");
