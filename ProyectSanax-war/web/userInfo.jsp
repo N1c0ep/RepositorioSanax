@@ -16,31 +16,35 @@
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><input type="text" name="firstname" value="${user.firstname}" /></td>
+                    <td><input type="text" name="firstname" value="${user.nombre}" /></td>
                 </tr>
                 <tr>
                     <td>Last Name</td>
-                    <td><input type="text" name="lastname" value="${user.lastname}" /></td>
+                    <td><input type="text" name="lastname" value="${user.apellido}" /></td>
                 </tr>
                 <tr>
                     <td>Location</td>
-                    <td><input type="text" name="location" value="${user.location}" /></td>
+                    <td><input type="text" name="location" value="${user.localidad}" /></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="email" value="${user.email}" /></td>
+                    <td><input type="text" name="email" value="${user.correo}" /></td>
                 </tr>
                 <tr>
                     <td>Birth Date</td>
-                    <td><input type="text" name="birth" value="${user.birth}" /></td>
+                    <td><input type="text" name="birth" value="${user.fecha}" /></td>
                 </tr>
                 <tr>
                     <td>Telephonic number</td>
-                    <td><input type="text" name="telephone" value="${user.telephone}" /></td>
+                    <td><input type="text" name="telephone" value="${user.telefono}" /></td>
                 </tr>
                 <tr>
                     <td>Contraseña</td>
-                    <td><input type="password" name="contra" value="${user.contra}" /></td>
+                    <td><input type="password" name="contra" value="${user.contrasena}" /></td>
+                </tr>
+                <tr>
+                    <td>Confirmar Contraseña</td>
+                    <td><input type="password" name="confirma" value="${user.confirm}" /></td>
                 </tr>
                 <tr>
                     <td>Tipo documento</td>

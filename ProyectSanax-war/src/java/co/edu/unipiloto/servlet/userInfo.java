@@ -55,30 +55,36 @@ public class userInfo extends HttpServlet {
             String localidad = request.getParameter("location");
             String direccion = request.getParameter("direccion");
             String correo = request.getParameter("email");
-            String telefono = request.getParameter("telephone");
+            String telefonoStr = request.getParameter("telephone");
             String Fechanacimiento = request.getParameter("birth");
             String contrasena = request.getParameter("contra");
+            String confirmacion = request.getParameter("confirma");
             String tipo = request.getParameter("tipo");
             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
             convertido = fechaHora.parse(Fechanacimiento);
             
             String idStr = request.getParameter("id");
             Integer id = 0;
+            
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
             
-            Usuariosnuevos user = new Usuariosnuevos(id,firstName,lastName,correo,convertido,localidad,telefono,contrasena,tipo, direccion);
-            
-            if (request.getParameter("action").equals("Add")) {
-                usuariosnuevosFacade.create(user);
-                mostrarMenu(out);
-            }else if(request.getParameter("action").equals("Next")){
-                if(usuariosnuevosFacade.find(id)!=null){
+            if (!contrasena.equals(confirmacion)) {
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseñas no coinciden\");\n" + "</script>");
+                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/userInfo.jsp\" />");
+            } else {
+                Usuariosnuevos user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion);
+
+                if (request.getParameter("action").equals("Add")) {
+                    usuariosnuevosFacade.create(user);
                     mostrarMenu(out);
+                } else if (request.getParameter("action").equals("Next")) {
+                    if (usuariosnuevosFacade.find(id) != null) {
+                        mostrarMenu(out);
+                    }
                 }
             }
-            
         
 //            request.setAttribute("user", user);
 //            request.setAttribute("allStudents", usuariosnuevosFacade.findAll());

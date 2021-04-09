@@ -65,9 +65,7 @@ public class ConsuInf extends HttpServlet {
             
              //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
              //Fase 1 2021-04-13 2 11:42
-//            if (request.getParameter("action").equals("Search")) {
-//                citaFacade.find(cita.getIdCita());
-//            }
+
             ArrayList<Cita> lista= new ArrayList<Cita>() ;
                        lista.add(cita);
             request.setAttribute("rows", lista);

@@ -6,6 +6,7 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -44,6 +45,10 @@ import javax.xml.bind.annotation.XmlTransient;
 , @NamedQuery(name = "Usuariosnuevos.findByTipoDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion")})
 public class Usuariosnuevos implements Serializable {
 
+    @Size(max = 50)
+    @Column(name = "TELEFONO")
+    private String telefono;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -65,9 +70,6 @@ public class Usuariosnuevos implements Serializable {
     @Size(max = 50)
     @Column(name = "LOCALIDAD")
     private String localidad;
-    @Size(max = 15)
-    @Column(name = "TELEFONO")
-    private String telefono;
     @Size(max = 50)
     @Column(name = "CONTRASENA")
     private String contrasena;
@@ -156,13 +158,6 @@ public class Usuariosnuevos implements Serializable {
         this.localidad = localidad;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public String getContrasena() {
         return contrasena;
@@ -212,6 +207,14 @@ public class Usuariosnuevos implements Serializable {
     @Override
     public String toString() {
         return "co.edu.unipiloto.usuario.entity.Usuariosnuevos[ id=" + id + " ]";
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
 }
