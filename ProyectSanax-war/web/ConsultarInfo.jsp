@@ -25,6 +25,8 @@
                 <tr>                   
                     <td colspan="2">
                         <input type="submit" name="action" value="Search" />
+                        <input type="submit" name="action" value="Cancelar" />
+                        <input type="submit" name="action" value="Menu" />
                     </td>
                 </tr>
                 <sql:setDataSource var = "bd" driver = "org.apache.derby.jdbc.ClientDriver"
@@ -38,15 +40,7 @@
                     </td>
                 </tr>
             </table>
-        </form> 
-        <form action="./CancCitaInfo" method="POST">
-            <table>
-                <td colspan="2">
-                    <input type="submit" name="action" value="Cancelar" />
-                    <input type="submit" name="action" value="Menu" />
-                </td>
-            </table>
-        </form>                
+        </form>               
         <br>  
         <h1>Citas disponibles</h1>
         <table border = "1">                  

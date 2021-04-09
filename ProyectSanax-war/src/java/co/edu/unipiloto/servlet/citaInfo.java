@@ -52,29 +52,36 @@ public class citaInfo extends HttpServlet {
             if (iduserStr != null && !iduserStr.equals("")) {
                 iduser = Integer.parseInt(iduserStr);
             }
-            
-           // System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
-            
-            Cita cita = new Cita (iduser,fechaStr,horaStr,faseStr, 1);
-            
+
+            // System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
+            Cita cita = new Cita(iduser, fechaStr, horaStr, faseStr, 1);
+
             //System.out.println(nuevcita.getFase()+" "+nuevcita.getFecha()+" "+ nuevcita.getHora()+" "+ nuevcita.getIdcita());
-            
             if (request.getParameter("action").equals("Add")) {
                 citaFacade.create(cita);
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
+                mostrarMenu(out);
+            } else {
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
+                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
             }
-            
+        }
+    }
+
+    
+    public void mostrarMenu(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet citaInfo</title>");   
+            out.println("<title>Servlet userInfo</title>");           
             out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
             out.println("</head>");
             out.println("<body>");
-            //out.println("<h1>Servlet opcionesCita at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
             out.println("</body>");
             out.println("</html>");
-        }
-    }
+  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

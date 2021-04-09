@@ -53,26 +53,29 @@ public class CancCitaInfo extends HttpServlet {
             if (citaidStr != null && !citaidStr.equals("")) {
                 citaid = Integer.parseInt(citaidStr);
             }
-            
+
             Cita cita = null;
-            
-            for (Cita c : citaFacade.findAll()) {
-                if (c.getIdentificacion().getId()==id && c.getIdCita()==citaid) {
-                    cita=c;
+            if (citaFacade.find(id) == null && citaFacade.find(citaid) == null) {
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"La cita no existe \");\n" + "</script>");
+                mostrarMenu2(out);
+            } else {
+                for (Cita c : citaFacade.findAll()) {
+                    if (c.getIdentificacion().getId() == id && c.getIdCita() == citaid) {
+                        cita = c;
+                    }
                 }
-            }
             
+
             if (request.getParameter("action").equals("Delete")) {
                 citaFacade.remove(cita);
-                mostrarMenu(out);
-            }else if(request.getParameter("action").equals("Cancelar")){   
-                mostrarMenu2(out);
-            }else if(request.getParameter("action").equals("Menu")){   
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"La cita se ha cancelado correctamente \");\n" + "</script>");
                 mostrarMenu(out);
             }
-            
         }
     }
+
+}
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -127,7 +130,7 @@ public class CancCitaInfo extends HttpServlet {
             out.println("</html>");
   }
     
-     public void mostrarMenu2(PrintWriter out){
+    public void mostrarMenu2(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -140,6 +143,5 @@ public class CancCitaInfo extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
   }
-    
-   
+     
 }

@@ -79,10 +79,6 @@ public class userInfo extends HttpServlet {
                 if (request.getParameter("action").equals("Add")) {
                     usuariosnuevosFacade.create(user);
                     mostrarMenu(out);
-                } else if (request.getParameter("action").equals("Next")) {
-                    if (usuariosnuevosFacade.find(id) != null) {
-                        mostrarMenu(out);
-                    }
                 }
             }
         

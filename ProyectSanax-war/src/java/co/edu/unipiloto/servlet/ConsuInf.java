@@ -47,41 +47,60 @@ public class ConsuInf extends HttpServlet {
             String action = request.getParameter("action");           
             String idStr = request.getParameter("id");
             Integer id = 0;
-            
+          
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
-            
-           
-            Cita cita= null;
-                
-            for (Cita c : citaFacade.findAll()) {
-                if (c.getIdentificacion().getId()==id) {
-                    cita=c;
-                    
-                }
-            }
-            
-            
-             //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
-             //Fase 1 2021-04-13 2 11:42
+            Cita cita = null;
+            ArrayList<Cita> lista = new ArrayList<>();
+            if (request.getParameter("action").equals("Search")) {
 
-            ArrayList<Cita> lista= new ArrayList<Cita>() ;
-                       lista.add(cita);
-            request.setAttribute("rows", lista);
-            request.getRequestDispatcher("ConsultarInfo.jsp").forward(request,response);
-            
+                for (Cita c : citaFacade.findAll()) {
+                    if (c.getIdentificacion().getId() == id) {
+                        cita = c;
+                        lista.add(cita);
+                    }
+                }
+                               
+                request.setAttribute("rows", lista);
+                request.getRequestDispatcher("ConsultarInfo.jsp").forward(request, response);
+            } else if (request.getParameter("action").equals("Cancelar")) {
+                mostrarMenu2(out);
+            } else if (request.getParameter("action").equals("Menu")) {
+                mostrarMenu(out);
+            }
+
+            //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
+        }
+    }
+    
+    public void mostrarMenu(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConsuInf</title>");            
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConsuInf at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
             out.println("</body>");
             out.println("</html>");
-        }
-    }
+  }
+    
+     public void mostrarMenu2(PrintWriter out){
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/CancelarInfo.jsp\" />");
+            out.println("</head>");
+            out.println("<body>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
+            out.println("</body>");
+            out.println("</html>");
+  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
