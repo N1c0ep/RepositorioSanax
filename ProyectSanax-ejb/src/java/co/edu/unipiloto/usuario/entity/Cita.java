@@ -64,12 +64,12 @@ public class Cita implements Serializable {
         this.idCita = idCita;
     }
 
-    public Cita(Integer iduser, String fecha, String hora, String fase, Integer idsitio) {
+    public Cita(String fecha, String hora, String fase, Sitio idSitio, Usuariosnuevos identificacion) { 
         this.fecha = fecha;
         this.hora = hora;
         this.fase = fase;
-        this.identificacion= new Usuariosnuevos(iduser);
-        this.idSitio=new Sitio(idsitio);
+        this.idSitio = idSitio;
+        this.identificacion = identificacion;
     }
     
     public Cita(Integer idCita, Usuariosnuevos identificacion) {

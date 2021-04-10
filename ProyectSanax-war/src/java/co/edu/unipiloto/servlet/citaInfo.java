@@ -6,7 +6,10 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.SitioFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -22,6 +25,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "citaInfo", urlPatterns = {"/citaInfo"})
 public class citaInfo extends HttpServlet {
+
+    @EJB
+    private SitioFacadeLocal sitioFacade;
+
+    @EJB
+    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
 
     @EJB
     private CitaFacadeLocal citaFacade;
@@ -54,20 +63,24 @@ public class citaInfo extends HttpServlet {
             }
 
             // System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
-            Cita cita = new Cita(iduser, fechaStr, horaStr, faseStr, 1);
-            if (request.getParameter("action").equals("Add")) {               
-                for (Cita cit : citaFacade.findAll()) {
-                    if(cit.getIdentificacion().getId() != iduser)
-                    {
-                        citaFacade.create(cita);
-                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
-                        mostrarMenu(out);
+              Usuariosnuevos user = null;
+              
+            if (request.getParameter("action").equals("Add")) {
+                for (Usuariosnuevos us : usuariosnuevosFacade.findAll()) {
+                    if (us.getId() == iduser) {
+                        user = us; 
+                        break;
                     }
-                    else 
-                    {
-                        out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
-                        out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
-                    }
+                }
+                
+                if (user == null) {
+                    out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
+                } else {
+                    Cita cita = new Cita(fechaStr, horaStr, faseStr, sitioFacade.find(1), user);
+                    citaFacade.create(cita);
+                    out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
+                    mostrarMenu(out);
                 }
             }
             //System.out.println(nuevcita.getFase()+" "+nuevcita.getFecha()+" "+ nuevcita.getHora()+" "+ nuevcita.getIdcita());

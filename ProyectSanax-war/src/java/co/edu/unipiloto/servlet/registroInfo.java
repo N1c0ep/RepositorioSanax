@@ -47,26 +47,21 @@ public class registroInfo extends HttpServlet {
             String correo = request.getParameter("email");
             String contrasena = request.getParameter("contra");
             String idStr = request.getParameter("id");
-            
+
             Integer id = 0;
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
-            
+
             if (request.getParameter("action").equals("Login")) {
-                for (Usuariosnuevos usuarios : usuariosnuevosFacade.findAll()) {
-                    if (usuarios.getId() == id) {
-                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha logueado correctamente\");\n" + "</script>");
-                        mostrarMenu(out);
-                        break;
-                    } else {
-                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Su usuario no existe, no se ha podido loguear\");\n" + "</script>");
-                        out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
-                        break;
-                    }
+                if (usuariosnuevosFacade.find(id) == null) {
+                    out.print("<script type=\"text/javascript\">\n" + " alert(\"Su usuario no existe, no se ha podido loguear\");\n" + "</script>");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
+                } else {
+                    out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha logueado correctamente\");\n" + "</script>");
+                    mostrarMenu(out);
                 }
             }
-
         }
     }
 

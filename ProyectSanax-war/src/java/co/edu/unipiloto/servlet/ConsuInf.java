@@ -54,7 +54,6 @@ public class ConsuInf extends HttpServlet {
             Cita cita = null;
             ArrayList<Cita> lista = new ArrayList<>();
             if (request.getParameter("action").equals("Search")) {
-
                 for (Cita c : citaFacade.findAll()) {
                     if (c.getIdentificacion().getId() == id) {
                         cita = c;
