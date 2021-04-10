@@ -66,9 +66,6 @@ public class registroInfo extends HttpServlet {
                     }
                 }
             }
-            if (request.getParameter("action").equals("Sign up")) {
-                mostrarMenu2(out);
-            }
 
         }
     }
