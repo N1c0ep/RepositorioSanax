@@ -30,8 +30,8 @@
                     </td>
                 </tr>
                 <sql:setDataSource var = "bd" driver = "org.apache.derby.jdbc.ClientDriver"
-                                   url = "jdbc:derby://localhost:1527/UsuariosReg"
-                                   user = "root1234"  password = "root1234"/>
+                                   url = "jdbc:derby://localhost:1527/UsariosReg"
+                                   user = "miguel"  password = "miguel"/>
                 <tr>                   
                     <td>
                         <sql:query var = "result" dataSource = "${bd}">

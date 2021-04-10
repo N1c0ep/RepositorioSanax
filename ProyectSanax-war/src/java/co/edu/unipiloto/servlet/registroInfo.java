@@ -58,9 +58,11 @@ public class registroInfo extends HttpServlet {
                     if (usuarios.getId() == id) {
                         out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha logueado correctamente\");\n" + "</script>");
                         mostrarMenu(out);
+                        break;
                     } else {
                         out.print("<script type=\"text/javascript\">\n" + " alert(\"Su usuario no existe, no se ha podido loguear\");\n" + "</script>");
                         out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
+                        break;
                     }
                 }
             }

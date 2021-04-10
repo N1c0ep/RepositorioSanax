@@ -57,15 +57,16 @@ public class citaInfo extends HttpServlet {
             Cita cita = new Cita(iduser, fechaStr, horaStr, faseStr, 1);
             if (request.getParameter("action").equals("Add")) {               
                 for (Cita cit : citaFacade.findAll()) {
-                    if (cit.getIdentificacion().getId() == iduser) {
+                    if(cit.getIdentificacion().getId() != iduser)
+                    {
                         citaFacade.create(cita);
                         out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
                         mostrarMenu(out);
-                        break;
-                    } else {
+                    }
+                    else 
+                    {
                         out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
                         out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
-                        break;
                     }
                 }
             }
