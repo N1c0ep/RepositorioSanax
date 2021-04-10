@@ -5,6 +5,8 @@
  */
 package co.edu.unipiloto.servlet;
 
+import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,14 +53,21 @@ public class registroInfo extends HttpServlet {
                 id = Integer.parseInt(idStr);
             }
             
-            if(request.getParameter("action").equals("Continuar")){
-                if(usuariosnuevosFacade.find(id)!=null){
-                    mostrarMenu(out);
+            if (request.getParameter("action").equals("Login")) {
+                for (Usuariosnuevos usuarios : usuariosnuevosFacade.findAll()) {
+                    if (usuarios.getId() == id) {
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha logueado correctamente\");\n" + "</script>");
+                        mostrarMenu(out);
+                    } else {
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Su usuario no existe, no se ha podido loguear\");\n" + "</script>");
+                        out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
+                    }
                 }
-            }else if(request.getParameter("action").equals("Login")){
+            }
+            if (request.getParameter("action").equals("Sign up")) {
                 mostrarMenu2(out);
             }
-            
+
         }
     }
 

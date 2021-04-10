@@ -7,7 +7,7 @@
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
+        <h1>Sign up</h1>
         <form action="./userInfo" method="POST">
             <table>
                 <tr>
