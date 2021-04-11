@@ -28,9 +28,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "userInfo", urlPatterns = {"/userInfo"})
 public class userInfo extends HttpServlet {
-
+    Usuariosnuevos user;
     @EJB
-    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
+    public UsuariosnuevosFacadeLocal usuariosnuevosFacade;
 
     
     
@@ -74,8 +74,8 @@ public class userInfo extends HttpServlet {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseñas no coinciden\");\n" + "</script>");
                 out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/userInfo.jsp\" />");
             } else {
-                Usuariosnuevos user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion);
-
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion);
+                
                 if (request.getParameter("action").equals("Add")) {
                     usuariosnuevosFacade.create(user);
                     mostrarMenu(out);
