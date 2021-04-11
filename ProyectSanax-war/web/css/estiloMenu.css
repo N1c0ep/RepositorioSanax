@@ -1,0 +1,46 @@
+body {
+    background-color: #D3D3D3 ;
+	padding:0px 0px;
+}
+
+
+
+.cabecera{
+    background-color:white;
+	color:green;
+	display:inline-block;
+	width:1300px;
+	padding:0px 15px;
+	position:relative;
+	margin: 0 -4px;
+}
+.lista{
+    list-style:none;
+	width:200px;
+	display:inline-block;
+    padding:0px 40px;
+	float:right;
+}
+h1{
+	float:left;
+	width:800px;
+}
+.saludo{
+	float:left;
+	width:1300px;
+	background-color:#696969;
+	color:white;
+	padding:0px 15px;
+	margin: 0 -4px;
+}
+.mensaje{
+	float:left;
+	width:1300px;
+	background-color:blue;
+	color:white;
+	padding:0px 15px;
+	margin: 0 -4px;
+}
+
+
+
