@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar cita</title>
+        <link rel="stylesheet" href="css/consultarInfo.css">
     </head>
     <body>  
         <h1>Buscar cita</h1>

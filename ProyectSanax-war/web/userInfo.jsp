@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" href="css/userInfo.css">
     </head>
     <body>
         <h1>Sign up</h1>
