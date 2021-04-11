@@ -31,10 +31,6 @@
                     <td><input type="time" name="hora" value="${asig.hora}" /></td>
                 </tr> 
                 <tr>
-                    <td>Id usuario</td>
-                    <td><input type="text" name="iduser" value="${asig.iduser}" /></td>
-                </tr> 
-                <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
                     </td>

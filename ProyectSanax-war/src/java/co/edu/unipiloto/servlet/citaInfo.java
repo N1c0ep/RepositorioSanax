@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -50,39 +51,46 @@ public class citaInfo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");          
+            
+            HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+
+            String action = request.getParameter("action");
+
+            Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
+                    
             String faseStr = request.getParameter("fase");
             String fechaStr = request.getParameter("fecha");
             String horaStr = request.getParameter("hora");
-            String iduserStr = request.getParameter("iduser");
+            //String iduserStr = request.getParameter("iduser");
             
-            Integer iduser=0;
+//            Integer iduser=0;
             
-            if (iduserStr != null && !iduserStr.equals("")) {
-                iduser = Integer.parseInt(iduserStr);
-            }
+//            if (iduserStr != null && !iduserStr.equals("")) {
+//                iduser = Integer.parseInt(iduserStr);
+//            }
 
             // System.out.println(fechaStr+" "+ horaStr+" "+ idStr + " " + faseStr);
-              Usuariosnuevos user = null;
+              //Usuariosnuevos user1 = null;
               
-            if (request.getParameter("action").equals("Add")) {
-                for (Usuariosnuevos us : usuariosnuevosFacade.findAll()) {
-                    if (us.getId() == iduser) {
-                        user = us; 
-                        break;
-                    }
-                }
-                
-                if (user == null) {
-                    out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
-                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
-                } else {
-                    Cita cita = new Cita(fechaStr, horaStr, faseStr, sitioFacade.find(1), user);
+            //if (request.getParameter("action").equals("Add")) {
+//                for (Usuariosnuevos us1 : usuariosnuevosFacade.findAll()) {
+//                    if (us1.getId() == us.getId()) {
+//                        user1 = us1; 
+//                        break;
+//                    }
+//                }
+//                
+//                if (us == null) {
+//                    out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
+//                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
+//                } else {
+                    Cita cita = new Cita(fechaStr, horaStr, faseStr, sitioFacade.find(1), us);
                     citaFacade.create(cita);
                     out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
                     mostrarMenu(out);
-                }
-            }
+                //}
+            //}
             //System.out.println(nuevcita.getFase()+" "+nuevcita.getFecha()+" "+ nuevcita.getHora()+" "+ nuevcita.getIdcita());
         }
     }

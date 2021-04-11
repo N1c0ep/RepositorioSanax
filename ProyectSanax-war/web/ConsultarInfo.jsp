@@ -22,10 +22,6 @@
         
         <form action="./ConsuInf" method="POST">
             <table>           
-                <tr>
-                    <td>Introduzca su id de usuario</td>
-                    <td><input type="text" name="id" value="${consu.identificacion}" /></td>
-                </tr>
                 <tr>                   
                     <td colspan="2">
                         <input type="submit" name="action" value="Search" />

@@ -6,7 +6,9 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,6 +26,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ConsuInf", urlPatterns = {"/ConsuInf"})
 public class ConsuInf extends HttpServlet {
+
+    @EJB
+    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
 
     @EJB
     private CitaFacadeLocal citaFacade;
@@ -44,32 +50,35 @@ public class ConsuInf extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String action = request.getParameter("action");           
-            String idStr = request.getParameter("id");
-            Integer id = 0;
-          
-            if (idStr != null && !idStr.equals("")) {
-                id = Integer.parseInt(idStr);
-            }
-            Cita cita = null;
-            ArrayList<Cita> lista = new ArrayList<>();
-            if (request.getParameter("action").equals("Search")) {
+            HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+
+            //Integer lo=Integer.parseInt(user);            
+            String action = request.getParameter("action");
+            //String idStr = request.getParameter("id");
+            if (request.getParameter("action").equals("Cancelar")) {
+                mostrarMenu2(out);
+            } else if (request.getParameter("action").equals("Menu")) {
+                mostrarMenu(out);
+            } else {
+                Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
+
+                Cita cita = null;
+                ArrayList<Cita> lista = new ArrayList<>();
+                //if (request.getParameter("action").equals("Search")) {
                 for (Cita c : citaFacade.findAll()) {
-                    if (c.getIdentificacion().getId() == id) {
+                    if (c.getIdentificacion().getId() == us.getId()) {
                         cita = c;
                         lista.add(cita);
                     }
                 }
-                               
-                request.setAttribute("rows", lista);
-                request.getRequestDispatcher("ConsultarInfo.jsp").forward(request, response);
-            } else if (request.getParameter("action").equals("Cancelar")) {
-                mostrarMenu2(out);
-            } else if (request.getParameter("action").equals("Menu")) {
-                mostrarMenu(out);
+                    // }
+                    //System.out.println(lista.get(0) + "///////////////////////////////" + lista.get(1));
+                    request.setAttribute("rows", lista);
+                    request.getRequestDispatcher("ConsultarInfo.jsp").forward(request, response);
+                    mostrarMenu(out);              
             }
-
-            //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
+       //System.out.println(cita.getFase() +" "+ cita.getFecha() +" "+ cita.getIdCita() +" "+ cita.getHora() );
         }
     }
     

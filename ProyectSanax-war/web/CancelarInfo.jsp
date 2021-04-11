@@ -20,10 +20,6 @@
         <form action="./CancCitaInfo" method="POST">
             <table>
                 <tr>
-                    <td>Id del usuario</td>
-                    <td><input type="text" name="id" value="${cance.id}" /></td>
-                </tr>
-                <tr>
                     <td>Id de la cita</td>
                     <td><input type="text" name="cita" value="${cance.cita}" /></td>
                 </tr>

@@ -6,7 +6,9 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -15,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,9 +26,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CancCitaInfo", urlPatterns = {"/CancCitaInfo"})
 public class CancCitaInfo extends HttpServlet {
 
+    @EJB
+    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
+
      @EJB
      private CitaFacadeLocal citaFacade;
     
+     
+     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,26 +49,31 @@ public class CancCitaInfo extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+
+            Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
+            
             String action = request.getParameter("action");
             String citaidStr = request.getParameter("cita");
-            String idStr = request.getParameter("id");
-            Integer id = 0;
+//            String idStr = request.getParameter("id");
+//            Integer id = 0;
             Integer citaid = 0;
             
-            if (idStr != null && !idStr.equals("")) {
-                id = Integer.parseInt(idStr);
-            }
+//            if (idStr != null && !idStr.equals("")) {
+//                id = Integer.parseInt(idStr);
+//            }
             if (citaidStr != null && !citaidStr.equals("")) {
                 citaid = Integer.parseInt(citaidStr);
             }
 
             Cita cita = null;
-            if (citaFacade.find(id) == null && citaFacade.find(citaid) == null) {
+            if (citaFacade.find(us.getId()) == null && citaFacade.find(citaid) == null) {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"La cita no existe \");\n" + "</script>");
                 mostrarMenu2(out);
             } else {
                 for (Cita c : citaFacade.findAll()) {
-                    if (c.getIdentificacion().getId() == id && c.getIdCita() == citaid) {
+                    if (c.getIdentificacion().getId() == us.getId() && c.getIdCita() == citaid) {
                         cita = c;
                     }
                 }

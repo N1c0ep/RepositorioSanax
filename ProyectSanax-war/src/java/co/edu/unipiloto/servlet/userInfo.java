@@ -96,7 +96,7 @@ public class userInfo extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet userInfo</title>");           
-            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
             out.println("</head>");
             out.println("<body>");
             //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");

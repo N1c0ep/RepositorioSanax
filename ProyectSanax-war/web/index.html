@@ -1,10 +1,10 @@
-
 <html>
 	<div class="cabecera">
 		<head>
 	
 			<meta charset="UTF-8">
                         <link rel="stylesheet" href="css/index.css">
+                        <script src="js/main.js"></script>
 			<title>Registro Sanax - SANAX</title>
 			<h1>Registro Sanax</h1>
 			<div>
@@ -20,29 +20,24 @@
 		</head>
 	
 	</div>
-	
     <body>
 		<p class="mensaje">CREA UNA CUENTA</p>
 		<p class="saludo">Hola, bienvenido al aplicativo sanax por favor ingresa los siguientes datos</p> 
 		
 		
-        <form action="./registroInfo" method="POST">
+        <form action="./registroInfo" method="POST" id="forminicio">
             <table>
                 <tr>
                     <td>Id usuario</td>
-                    <td><input type="text" name="id"/></td>
-                </tr>
-                <tr>
-                    <td>Correo</td>
-                    <td><input type="text" name="email"/></td>
-                </tr>
+                    <td><input type="text" name="id1" id="txtid"/></td>
+                </tr>              
                 <tr>
                     <td>Contraseña</td>
-                    <td><input type="password" name="contra" /></td>
+                    <td><input type="password" name="contra" id="txtpass"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input class="botonch" type="submit" name="action" value="Login" />
+                        <input class="botonch" type="button" name="action" value="Login" id="btniniciar" />
                     </td>
                 </tr>
             </table>
