@@ -2,13 +2,33 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+    <div class="cabecera">
+        
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/menuInfo.css">
-        <title>Menu</title>
-    </head>
-        <body>
+        <title>Menu - SANAX</title>
         <h1>Menu</h1>
+        
+        
+        
+                        <div>
+				<nav >
+					<ul class="lista">
+						<li>Inicio</li>
+						<li>Fecha de vacunacion</li>
+                
+					</ul>
+				</nav>
+			</div>
+      
+        
+    </head>
+    
+    </div>
+        <body>
+        
         <form action="./userInfo" method="POST">
             <input type="button" value="Agendar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/AgendarInfo.jsp'"/>
             <br>

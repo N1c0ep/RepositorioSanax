@@ -23,8 +23,13 @@ body {
 	float:right;
 }
 h1{
-	float:left;
-	width:800px;
+        background-color:white;
+	color:green;
+	display:inline-block;
+	width:1300px;
+	padding:0px 15px;
+	position:relative;
+	margin: 0 -4px;
 }
 .saludo{
 	float:left;

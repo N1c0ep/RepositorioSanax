@@ -10,17 +10,20 @@
 <!DOCTYPE html>
 
 <html>
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar cita</title>
+        <title>Consultar cita - SANAX</title>
+        <h1>Agendar Cita</h1>
         <link rel="stylesheet" href="css/consultarInfo.css">
     </head>
+    </div>
     <body>  
-        <h1>Buscar cita</h1>
+        
         <form action="./ConsuInf" method="POST">
             <table>           
                 <tr>
-                    <td>ponga su id de usuario</td>
+                    <td>Introduzca su id de usuario</td>
                     <td><input type="text" name="id" value="${consu.identificacion}" /></td>
                 </tr>
                 <tr>                   

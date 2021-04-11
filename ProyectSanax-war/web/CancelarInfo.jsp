@@ -7,13 +7,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cancelar cita - SANAX</title>
+        <h1>Cancelar Cita</h1>
         <link rel="stylesheet" href="css/cancelarInfo.css">
     </head>
+    </div>
     <body>
-        <h1>Cancelar cita</h1>
+        
         <form action="./CancCitaInfo" method="POST">
             <table>
                 <tr>

@@ -2,13 +2,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+    
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agendar cita</title>
+        <title>Agendar cita - SANAX</title>
+        <h1>Agendar Cita</h1>
         <link rel="stylesheet" href="css/agendarInfo.css">
     </head>
+    </div>
     <body>
-        <h1>Agendar cita</h1>
+        
         <form action="./citaInfo" method="POST">
             <table>
                 <tr>                  
