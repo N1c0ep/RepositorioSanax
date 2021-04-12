@@ -31,8 +31,6 @@ HttpSession objsession = request.getSession(false);
 					</ul>
 				</nav>
 			</div>
-      
-        
     </head>
     
     </div>
@@ -48,4 +46,5 @@ HttpSession objsession = request.getSession(false);
             <input type="button" value="Cancelar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/CancelarInfo.jsp'"/>
         </form>
         </body>
+        <a href="http://localhost:8080/ProyectSanax-war/index.html"> Salir </a>
 </html>
