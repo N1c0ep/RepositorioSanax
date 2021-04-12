@@ -1,25 +1,61 @@
 
 body {
     background-color: #D3D3D3 ;
-	padding:0px 0px;
+    padding:0px 0px;
 }
 
 .bt1 {
-    
-    
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    text-align: right;
+    font-weight:bold;
+    color:white;
+    background:#141c95;
+    border:0px;
+    width:303px;
+    height:100px;
+ 
 }
 
 .bt2{
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    text-align: right;
+    font-weight:bold;
+    color:white;
+    background:#141c95;
+    border:0px;
+    width:303px;
+    height:100px;
+  
     
     
 }
 
 .bt3{
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    text-align: right;
+    font-weight:bold;
+    color:white;
+    background:#141c95;
+    border:0px;
+    width:303px;
+    height:100px;
     
     
 }
 
 .bt4{
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    text-align: right;
+    font-weight:bold;
+    color:white;
+    background:#141c95;
+    border:0px;
+    width:303px;
+    height:100px;
     
 }
 

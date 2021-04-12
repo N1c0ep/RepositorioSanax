@@ -39,18 +39,16 @@ HttpSession objsession = request.getSession(false);
            
         <form action="./userInfo" method="POST">
             <input type="button" class="bt1" value="Agendar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/AgendarInfo.jsp'"/>
-            <br>
-            <br>
+            
             <input type="button" class="bt2" value="Consultar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/ConsultarInfo.jsp'"/>
-            <br>
-            <br>
+            
             <input type="button" class="bt3" value="Cancelar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/CancelarInfo.jsp'"/>
-            <br>
-            <br>
+           
             <input type="button" class="bt4" value="Actualizar info personal" OnClick="location.href='//localhost:8080/ProyectSanax-war/ActualizarInfo.jsp'"/>
         </form>
             
    
         </body>
+ 
         <a href="http://localhost:8080/ProyectSanax-war/index.html"> Salir </a>
 </html>
