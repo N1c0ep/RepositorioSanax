@@ -1,10 +1,51 @@
 
 body {
-    background-color: #D3D3D3 ;
-	padding:0px 0px;
+    background-color: #D3D3D3;
+    padding:0px 0px;
 }
 
+table{
+    width: 330px;
+    background: #D3D3D3;
+    margin: auto;
+    margin-top: 80px;
+}
 
+.botonch{
+    width: 400px;
+    background: #7bc37b;
+    margin: auto;   
+    font-family: 'calibri';
+    padding: 0;
+}
+
+.botonch2{
+    width: 400px;
+    background: #4e9e4e;
+    margin: auto;   
+    font-family: 'calibri';
+    padding: 0;
+}
+
+.botonch3{
+    width: 400px;
+    background: #337633;
+    margin-left: 4.5px;   
+    font-family: 'calibri';
+    padding: 0;
+}
+
+placeholder{
+    background: white;
+    font-family: 'calibri';
+}
+
+href{
+    width: 330px;
+    background: #D3D3D3;
+    margin: auto;
+    margin-top: 80px;
+}
 
 .cabecera{
     background-color:white;
@@ -17,10 +58,10 @@ body {
 }
 .lista{
     list-style:none;
-	width:200px;
-	display:inline-block;
+    width:200px;
+    display:inline-block;
     padding:0px 40px;
-	float:right;
+    float:right;
 }
 h1{
 	float:left;
@@ -35,11 +76,6 @@ h1{
 	margin: 0 -4px;
 }
 
-botonch{
-    background-color: red
-    
-    
-}
 .mensaje{
 	float:left;
 	width:1300px;

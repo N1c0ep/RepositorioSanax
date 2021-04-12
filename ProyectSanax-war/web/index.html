@@ -11,7 +11,7 @@
 				<nav >
 					<ul class="lista">
 						<li>Inicio</li>
-						<li>Fecha de vacunacion</li>
+						<li>Fases de vacunacion</li>
                 
 					</ul>
 				</nav>
@@ -24,26 +24,27 @@
 		<p class="mensaje">CREA UNA CUENTA</p>
 		<p class="saludo">Hola, bienvenido al aplicativo sanax por favor ingresa los siguientes datos</p> 
 		
-		
+        
         <form action="./registroInfo" method="POST" id="forminicio">
+            
             <table>
                 <tr>
-                    <td>Id usuario</td>
-                    <td><input type="text" name="id1" id="txtid"/></td>
+                    <td></td>
+                    <td><input class="botonch" type="text" name="id1" placeholder="Id usuario" id="txtid"/></td>
                 </tr>              
                 <tr>
-                    <td>Contraseña</td>
-                    <td><input type="password" name="contra" id="txtpass"/></td>
+                    <td></td>
+                    <td><input class="botonch2" type="password" name="contra" placeholder="Contraseña" id="txtpass"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input class="botonch" type="button" name="action" value="Login" id="btniniciar" />
+                        <input class="botonch3" type="button" name="action" value="Login" id="btniniciar" />
                     </td>
                 </tr>
             </table>
         </form>
         <a href="http://localhost:8080/ProyectSanax-war/userInfo.jsp"> Registrate aqui </a>
-        
+       
     </body>
 	
 </html>
