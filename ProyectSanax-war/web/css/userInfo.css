@@ -4,7 +4,59 @@ body {
 	padding:0px 0px;
 }
 
+.b1{
+    background: #93c8a6;
+    border-radius: 5px;
+}
 
+.b2{
+    background: #79b890;
+    border-radius: 5px;
+}
+
+.b3{
+    background: #5b9a72;
+    border-radius: 5px;
+}
+
+.b4{
+    background: #4d8d64;
+    border-radius: 5px;
+}
+
+.b5{
+    background: #3e8257;
+    border-radius: 5px;
+}
+.b6{
+    background: #276d41;
+    border-radius: 5px;
+}
+
+.b7{
+    background: #316343;
+    border-radius: 5px;
+}
+
+.b8{
+    background: #14562c;
+    border-radius: 5px;
+}
+
+.b9{
+    background: #0c401f;
+    border-radius: 5px;
+}
+
+.b10{
+    background: #072a14;
+    border-radius: 5px;
+}
+
+.b11{
+    margin-left: 55px;
+    border-style: inset;
+}
 
 .cabecera{
     background-color:white;
