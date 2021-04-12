@@ -1,8 +1,7 @@
 
 body {
-    background: url(uno.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #D3D3D3;
+    padding:0px 0px;
 }
 
 table{
@@ -50,6 +49,7 @@ href{
 
 .cabecera{
     background-color:white;
+    
 	color:green;
 	display:inline-block;
 	width:1300px;
