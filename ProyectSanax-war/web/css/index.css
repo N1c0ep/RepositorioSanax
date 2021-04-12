@@ -48,8 +48,10 @@ placeholder{
 href{
     width: 330px;
     background: #D3D3D3;
-    margin: auto;
-    margin-top: 80px;
+}
+
+.linkregi{
+    margin-left: 570px;
 }
 
 .cabecera{

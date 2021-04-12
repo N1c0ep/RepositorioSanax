@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                <select name="tipo" value="${user.tipo}">
+                <select name="tipo" class="cc" value="${user.tipo}">
                     <option>Cedula de ciudadania</option>
                     <option>Tarjeta de identidad</option>
                 </select>

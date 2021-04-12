@@ -7,55 +7,70 @@ body {
 .b1{
     background: #93c8a6;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b2{
     background: #79b890;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b3{
     background: #5b9a72;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b4{
     background: #4d8d64;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b5{
     background: #3e8257;
     border-radius: 5px;
+    margin-left: 200px;
 }
 .b6{
     background: #276d41;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b7{
     background: #316343;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b8{
     background: #14562c;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b9{
     background: #0c401f;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b10{
     background: #072a14;
     border-radius: 5px;
+    margin-left: 200px;
 }
 
 .b11{
     margin-left: 55px;
     border-style: inset;
+    margin-left: 260px;
+}
+
+.cc{
+    margin-left: 210px;
 }
 
 .cabecera{
