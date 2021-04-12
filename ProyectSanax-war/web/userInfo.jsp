@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign Up - SANAX</title>
-        <h1>Sign Up</h1>
+        <h1> <img src="singin.png">Sign Up</h1>
         <link rel="stylesheet" href="css/userInfo.css">
     </head>
     
