@@ -5,6 +5,7 @@
  */
 package co.edu.unipiloto.usuario.entity;
 
+import java.beans.PropertyChangeEvent;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Collection;

@@ -5,6 +5,7 @@
  */
 package co.edu.unipiloto.servlet;
 
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -48,49 +50,83 @@ public class ActInfo extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+
+            Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
+           
+            String action = request.getParameter("action");
             String firstName = request.getParameter("firstname");
-            String lastName = request.getParameter("lastname");           
+            String lastName = request.getParameter("lastname");
             String localidad = request.getParameter("location");
             String direccion = request.getParameter("direccion");
             String correo = request.getParameter("email");
             String telefonoStr = request.getParameter("telephone");
             String Fechanacimiento = request.getParameter("birth");
             String tipo = request.getParameter("tipo");
-            String idStr = request.getParameter("id");
-            Integer id = 0;
-             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
-             Date convertido = fechaHora.parse(Fechanacimiento);
-            
-            if (idStr != null && !idStr.equals("")) {
-                id = Integer.parseInt(idStr);
+//            String idStr = request.getParameter("id");
+//            Integer id = 0;
+            if (request.getParameter("action").equals("Actualizar")) {
+
+                
+//            if (idStr != null && !idStr.equals("")) {
+//                id = Integer.parseInt(idStr);
+//            }
+                if (firstName != null && !firstName.equals("")) {
+                    us.setNombre(firstName);
+                }
+                else{
+                    us.setNombre(us.getNombre());
+                }
+                if (lastName != null && !lastName.equals("")) {
+                    us.setApellido(lastName);
+                }
+                else{
+                    us.setApellido(us.getApellido());
+                }
+                if (localidad != null && !localidad.equals("")) {
+                    us.setLocalidad(localidad);
+                }
+                else{
+                    us.setLocalidad(us.getLocalidad());
+                }
+                if (direccion != null && !direccion.equals("")) {
+                    us.setDireccion(direccion);
+                }
+                else{
+                    us.setDireccion(us.getDireccion());
+                }
+                if (correo != null && !correo.equals("")) {
+                    us.setCorreo(correo);
+                }
+                else{
+                   us.setCorreo(us.getCorreo());
+                }
+                if (telefonoStr != null && !telefonoStr.equals("")) {
+                    us.setTelefono(telefonoStr);
+                }
+                else{
+                    us.setTelefono(us.getTelefono());
+                    System.out.println(us.getTelefono());
+                }
+                if (Fechanacimiento != null && !Fechanacimiento.equals("")) {
+                    DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
+                    Date convertido = fechaHora.parse(Fechanacimiento);
+                    us.setFecha(convertido);
+                }
+                else{
+                    us.setFecha(us.getFecha());
+                }
+                if (tipo != null && !tipo.equals("")) {
+                    us.setTipoDocumento(tipo);
+                }
+                else{
+                    us.setTipoDocumento(us.getTipoDocumento());
+                }
+                usuariosnuevosFacade.edit(us);
+                mostrarMenu(out);
             }
-            if (firstName!=null&&!firstName.equals("")){
-                usuariosnuevosFacade.find(id).setNombre(firstName);
-            }
-            if (lastName!=null&&!lastName.equals("")){
-                usuariosnuevosFacade.find(id).setApellido(lastName);
-            }
-            if (localidad!=null&&!localidad.equals("")){
-                usuariosnuevosFacade.find(id).setLocalidad(localidad);
-            }
-            if (direccion!=null&&!direccion.equals("")){
-                usuariosnuevosFacade.find(id).setDireccion(direccion);
-            }
-            if (correo!=null&&!correo.equals("")){
-                usuariosnuevosFacade.find(id).setCorreo(correo);
-            }
-            if (telefonoStr!=null&&!telefonoStr.equals("")){
-                usuariosnuevosFacade.find(id).setTelefono(telefonoStr);
-            }
-            if (Fechanacimiento!=null&&!Fechanacimiento.equals("")){
-                usuariosnuevosFacade.find(id).setFecha(convertido);
-            }
-            if (tipo!=null&&!tipo.equals("")){
-                usuariosnuevosFacade.find(id).setTipoDocumento(tipo);
-            }
-            mostrarMenu(out);
-            
-            
+
         }
     }
       public void mostrarMenu(PrintWriter out){
@@ -98,7 +134,7 @@ public class ActInfo extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet userInfo</title>");           
-            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
             out.println("</head>");
             out.println("<body>");
             //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");

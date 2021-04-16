@@ -13,19 +13,15 @@
         
     </head>
     <body>
-        <h2>Actualiza tu información recuerda que tu id no es modificable debes ingresar el actual</h2>
+        <h2>Actualiza tu información </h2>
         <form action="./ActInfo" method="POST">
             <table>
                 <tr>
                     <td>Tipo documento</td>
-                <select name="tipo" value="${user.tipo}">
+                <select name="tipo" value="${user.tipoDocumento}">
                     <option>Cedula de ciudadania</option>
                     <option>Tarjeta de identidad</option>
                 </select>
-                </tr>
-                <tr>
-                    <td>Id</td>
-                    <td><input type="text" name="id" value="${user.id}" /></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
@@ -57,7 +53,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="action" value="Add" />
+                        <input type="submit" name="action" value="Actualizar" />
                     </td>
                 </tr>
             </table>
