@@ -5,9 +5,9 @@ body {
 }
 
 
-
 .cabecera{
     background-color:white;
+        text-align:center;
 	color:green;
 	display:inline-block;
 	width:1300px;
@@ -15,6 +15,25 @@ body {
 	position:relative;
 	margin: 0 -4px;
 }
+
+.linea{
+      float:left;
+	width:1300px;
+	background-color:black;
+	color:black;
+	padding:0px 15px;
+	margin: -4px -4px;
+}
+
+.linea2{
+      float:right;
+	width:100px;
+	background-color:black;
+	color:black;
+	padding:0px 15px;
+	margin: -4px -4px;
+}
+
 .lista{
     list-style:none;
 	width:200px;

@@ -7,12 +7,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agendar cita - SANAX</title>
-        <h1>Agendar Cita</h1>
+        <h1>SANAX</h1>
         <link rel="stylesheet" href="css/agendarInfo.css">
     </head>
     </div>
     <body>
-        
+       <p class="linea">.</p>
+       <br>
+       <br>
         <form action="./citaInfo" method="POST">
             <table>
                 <tr>                  

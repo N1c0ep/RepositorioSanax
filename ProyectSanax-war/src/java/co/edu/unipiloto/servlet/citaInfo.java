@@ -12,6 +12,7 @@ import co.edu.unipiloto.usuario.session.SitioFacadeLocal;
 import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,9 +57,18 @@ public class citaInfo extends HttpServlet {
             String user = (String) objsession.getAttribute("id1");
 
             String action = request.getParameter("action");
-
+            int contador = 0;
+            Cita cita1 = null;
+            ArrayList<Cita> lista = new ArrayList<>();
             Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
-                    
+            
+            for (Cita c : citaFacade.findAll()) {
+                if (c.getIdentificacion().getId() == us.getId()) {
+                    cita1 = c;
+                    lista.add(cita1);
+                    contador++;
+                }
+            }
             String faseStr = request.getParameter("fase");
             String fechaStr = request.getParameter("fecha");
             String horaStr = request.getParameter("hora");

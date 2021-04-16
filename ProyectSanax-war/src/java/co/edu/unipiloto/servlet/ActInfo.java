@@ -124,6 +124,7 @@ public class ActInfo extends HttpServlet {
                     us.setTipoDocumento(us.getTipoDocumento());
                 }
                 usuariosnuevosFacade.edit(us);
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha modifica la cita correctamente \");\n" + "</script>");
                 mostrarMenu(out);
             }
 
