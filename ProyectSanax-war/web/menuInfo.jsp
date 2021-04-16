@@ -45,6 +45,8 @@ HttpSession objsession = request.getSession(false);
             <input type="button" class="bt3" value="Cancelar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/CancelarInfo.jsp'"/>
            
             <input type="button" class="bt4" value="Actualizar info personal" OnClick="location.href='//localhost:8080/ProyectSanax-war/ActualizarInfo.jsp'"/>
+            
+            <input type="button" class="bt5" value="Modificar cita" OnClick="location.href='//localhost:8080/ProyectSanax-war/ModificarCitaInfo.jsp'"/>
         </form>
             
    

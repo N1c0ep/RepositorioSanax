@@ -6,9 +6,12 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +27,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ModCitaInfo", urlPatterns = {"/ModCitaInfo"})
 public class ModCitaInfo extends HttpServlet {
     
+    @EJB
+    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
+
     @EJB
     private CitaFacadeLocal citaFacade;
 
@@ -43,35 +49,102 @@ public class ModCitaInfo extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             HttpSession objsession = request.getSession(false);
-            String cita = (String) objsession.getAttribute("id1");
-            String action = request.getParameter("action");
+            String user = (String) objsession.getAttribute("id1");
             
-            Cita ci = citaFacade.find(Integer.parseInt(cita));
+            Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
+            int contador = 0;
+            Cita cita = null;
+            ArrayList<Cita> lista = new ArrayList<>();
+            //if (request.getParameter("action").equals("Search")) {
             
-            String faseStr = request.getParameter("fase");
-            String fechaStr = request.getParameter("fecha");
-            String horaStr = request.getParameter("hora");
+            for (Cita c : citaFacade.findAll()) {
+                if (c.getIdentificacion().getId() == us.getId()) {
+                    cita = c;
+                    lista.add(cita);
+                    contador++;
+                }
+            }
             
-            if (faseStr != null && !faseStr.equals("")) {
-                ci.setFase(faseStr);
-            }
-            else{
-                ci.setFase(ci.getFase());
-            }
-            if (fechaStr != null && !fechaStr.equals("")) {
-                ci.setFecha(fechaStr);
-            }
-            else{
-                ci.setFecha(ci.getFecha());
-            }
-            if (horaStr != null && !horaStr.equals("")) {
-                ci.setHora(horaStr);
-            }
-            else{
-                ci.setHora(ci.getHora());
-            }
-            citaFacade.edit(ci);
-            mostrarMenu(out);
+            if(!lista.isEmpty()){
+                int idCita = Integer.parseInt(request.getParameter("idCita"));
+                String idCitaStr = Integer.toString(idCita);
+                if(contador == 2){
+                    if(idCita == lista.get(0).getIdCita()||idCita == lista.get(1).getIdCita()){
+                        
+                        HttpSession objsession2 = request.getSession(false);
+                        String action = request.getParameter("action");
+                        Cita ci = citaFacade.find(Integer.parseInt(idCitaStr));
+                        
+                        String faseStr = request.getParameter("fase");
+                        String fechaStr = request.getParameter("fecha");
+                        String horaStr = request.getParameter("hora");
+            
+                        if (faseStr != null && !faseStr.equals("")) {
+                            ci.setFase(faseStr);
+                        }
+                        else{
+                            ci.setFase(ci.getFase());
+                        }
+                        if (fechaStr != null && !fechaStr.equals("")) {
+                            ci.setFecha(fechaStr);
+                        }
+                        else{
+                            ci.setFecha(ci.getFecha());
+                        }
+                        if (horaStr != null && !horaStr.equals("")) {
+                            ci.setHora(horaStr);
+                        }
+                        else{
+                            ci.setHora(ci.getHora());
+                        }
+                        citaFacade.edit(ci);
+                        mostrarMenu(out);
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha modificado la cita correctamente \");\n" + "</script>");
+                    }
+                    else{
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"id de Cita no corresponde al usuario \");\n" + "</script>");
+                        out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/ModificarCitaInfo.jsp\" />");
+                    }
+                }
+                else{
+                    if(idCita == lista.get(0).getIdCita()){
+                        HttpSession objsession2 = request.getSession(false);
+                        String action = request.getParameter("action");
+                        Cita ci = citaFacade.find(Integer.parseInt(idCitaStr));
+                        
+                        String faseStr = request.getParameter("fase");
+                        String fechaStr = request.getParameter("fecha");
+                        String horaStr = request.getParameter("hora");
+            
+                        if (faseStr != null && !faseStr.equals("")) {
+                            ci.setFase(faseStr);
+                        }
+                        else{
+                            ci.setFase(ci.getFase());
+                        }
+                        if (fechaStr != null && !fechaStr.equals("")) {
+                            ci.setFecha(fechaStr);
+                        }
+                        else{
+                            ci.setFecha(ci.getFecha());
+                        }
+                        if (horaStr != null && !horaStr.equals("")) {
+                            ci.setHora(horaStr);
+                        }
+                        else{
+                            ci.setHora(ci.getHora());
+                        }
+                        citaFacade.edit(ci);
+                        mostrarMenu(out);
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha modificado la cita correctamente \");\n" + "</script>");
+                    }
+                    else{
+                        out.print("<script type=\"text/javascript\">\n" + " alert(\"id de Cita no corresponde al usuario \");\n" + "</script>");
+                        out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/ModificarCitaInfo.jsp\" />");
+                    }
+                    
+                }
+            }       
         }
     }
     public void mostrarMenu(PrintWriter out){
