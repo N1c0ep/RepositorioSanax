@@ -61,7 +61,7 @@ public class citaInfo extends HttpServlet {
             Cita cita1 = null;
             ArrayList<Cita> lista = new ArrayList<>();
             Usuariosnuevos us = usuariosnuevosFacade.find(Integer.parseInt(user));
-            
+
             for (Cita c : citaFacade.findAll()) {
                 if (c.getIdentificacion().getId() == us.getId()) {
                     cita1 = c;
@@ -69,9 +69,21 @@ public class citaInfo extends HttpServlet {
                     contador++;
                 }
             }
-            String faseStr = request.getParameter("fase");
-            String fechaStr = request.getParameter("fecha");
-            String horaStr = request.getParameter("hora");
+
+            if(contador < 2){
+                String faseStr = request.getParameter("fase");
+                String fechaStr = request.getParameter("fecha");
+                String horaStr = request.getParameter("hora");
+                Cita cita = new Cita(fechaStr, horaStr, faseStr, sitioFacade.find(1), us);
+                citaFacade.create(cita);
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
+                mostrarMenu(out);
+            }
+            else{
+                out.print("<script type=\"text/javascript\">\n" + " alert(\"No puede agendar más citas, ya tiene agendadas las 2 citas de vacunación \");\n" + "</script>");
+                mostrarMenu(out);
+            }
+           
             //String iduserStr = request.getParameter("iduser");
             
 //            Integer iduser=0;
@@ -95,10 +107,6 @@ public class citaInfo extends HttpServlet {
 //                    out.print("<script type=\"text/javascript\">\n" + " alert(\"No se ha asignado la cita correctamente\");\n" + "</script>");
 //                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AgendarInfo.jsp\" />");
 //                } else {
-                    Cita cita = new Cita(fechaStr, horaStr, faseStr, sitioFacade.find(1), us);
-                    citaFacade.create(cita);
-                    out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha asignado la cita correctamente \");\n" + "</script>");
-                    mostrarMenu(out);
                 //}
             //}
             //System.out.println(nuevcita.getFase()+" "+nuevcita.getFecha()+" "+ nuevcita.getHora()+" "+ nuevcita.getIdcita());
