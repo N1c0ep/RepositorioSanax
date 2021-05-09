@@ -6,6 +6,7 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -50,6 +53,8 @@ public class Cita implements Serializable {
     @Size(max = 50)
     @Column(name = "FASE")
     private String fase;
+    @OneToMany(mappedBy = "idCita")
+    private Collection<ReporteVacunacion> reporteVacunacionCollection;
     @JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO")
     @ManyToOne
     private Sitio idSitio;
@@ -63,17 +68,12 @@ public class Cita implements Serializable {
     public Cita(Integer idCita) {
         this.idCita = idCita;
     }
-
-    public Cita(String fecha, String hora, String fase, Sitio idSitio, Usuariosnuevos identificacion) { 
+    
+     public Cita(String fecha, String hora, String fase, Sitio idSitio, Usuariosnuevos identificacion) {
         this.fecha = fecha;
         this.hora = hora;
         this.fase = fase;
         this.idSitio = idSitio;
-        this.identificacion = identificacion;
-    }
-    
-    public Cita(Integer idCita, Usuariosnuevos identificacion) {
-        this.idCita = idCita;
         this.identificacion = identificacion;
     }
 
@@ -107,6 +107,15 @@ public class Cita implements Serializable {
 
     public void setFase(String fase) {
         this.fase = fase;
+    }
+
+    @XmlTransient
+    public Collection<ReporteVacunacion> getReporteVacunacionCollection() {
+        return reporteVacunacionCollection;
+    }
+
+    public void setReporteVacunacionCollection(Collection<ReporteVacunacion> reporteVacunacionCollection) {
+        this.reporteVacunacionCollection = reporteVacunacionCollection;
     }
 
     public Sitio getIdSitio() {

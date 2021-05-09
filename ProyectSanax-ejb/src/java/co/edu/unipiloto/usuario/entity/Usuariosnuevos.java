@@ -5,9 +5,7 @@
  */
 package co.edu.unipiloto.usuario.entity;
 
-import java.beans.PropertyChangeEvent;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -40,15 +38,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuariosnuevos.findByCorreo", query = "SELECT u FROM Usuariosnuevos u WHERE u.correo = :correo")
     , @NamedQuery(name = "Usuariosnuevos.findByFecha", query = "SELECT u FROM Usuariosnuevos u WHERE u.fecha = :fecha")
     , @NamedQuery(name = "Usuariosnuevos.findByLocalidad", query = "SELECT u FROM Usuariosnuevos u WHERE u.localidad = :localidad")
-    , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")
     , @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena")
     , @NamedQuery(name = "Usuariosnuevos.findByTipoDocumento", query = "SELECT u FROM Usuariosnuevos u WHERE u.tipoDocumento = :tipoDocumento")
-, @NamedQuery(name = "Usuariosnuevos.findByTipoDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion")})
+    , @NamedQuery(name = "Usuariosnuevos.findByDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion")
+    , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")})
 public class Usuariosnuevos implements Serializable {
-
-    @Size(max = 50)
-    @Column(name = "TELEFONO")
-    private String telefono;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -75,11 +69,14 @@ public class Usuariosnuevos implements Serializable {
     @Column(name = "CONTRASENA")
     private String contrasena;
     @Size(max = 50)
+    @Column(name = "TIPO_DOCUMENTO")
+    private String tipoDocumento;
+    @Size(max = 50)
     @Column(name = "DIRECCION")
     private String direccion;
     @Size(max = 50)
-    @Column(name = "TIPO_DOCUMENTO")
-    private String tipoDocumento;
+    @Column(name = "TELEFONO")
+    private String telefono;
     @OneToMany(mappedBy = "identificacion")
     private Collection<Cita> citaCollection;
 
@@ -89,18 +86,18 @@ public class Usuariosnuevos implements Serializable {
     public Usuariosnuevos(Integer id) {
         this.id = id;
     }
-
-    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String telefono, String contrasena, String tipoDocumento, String direccion ) {
+    
+       public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.fecha = fecha;
         this.localidad = localidad;
-        this.telefono = telefono;
         this.contrasena = contrasena;
         this.tipoDocumento = tipoDocumento;
-        this.direccion=direccion;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
     public Integer getId() {
@@ -113,14 +110,6 @@ public class Usuariosnuevos implements Serializable {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public void setNombre(String nombre) {
@@ -159,7 +148,6 @@ public class Usuariosnuevos implements Serializable {
         this.localidad = localidad;
     }
 
-
     public String getContrasena() {
         return contrasena;
     }
@@ -174,6 +162,22 @@ public class Usuariosnuevos implements Serializable {
 
     public void setTipoDocumento(String tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     @XmlTransient
@@ -208,14 +212,6 @@ public class Usuariosnuevos implements Serializable {
     @Override
     public String toString() {
         return "co.edu.unipiloto.usuario.entity.Usuariosnuevos[ id=" + id + " ]";
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
     
 }

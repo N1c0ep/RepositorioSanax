@@ -8,6 +8,7 @@ package co.edu.unipiloto.usuario.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,27 +31,23 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "InventarioVacunas.findAll", query = "SELECT i FROM InventarioVacunas i")
-    , @NamedQuery(name = "InventarioVacunas.findByLote", query = "SELECT i FROM InventarioVacunas i WHERE i.lote = :lote")
-    , @NamedQuery(name = "InventarioVacunas.findByCantidad", query = "SELECT i FROM InventarioVacunas i WHERE i.cantidad = :cantidad")
     , @NamedQuery(name = "InventarioVacunas.findByIdInventario", query = "SELECT i FROM InventarioVacunas i WHERE i.idInventario = :idInventario")})
 public class InventarioVacunas implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Size(max = 50)
-    @Column(name = "LOTE")
-    private String lote;
-    @Column(name = "CANTIDAD")
-    private Integer cantidad;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_INVENTARIO")
     private Integer idInventario;
+    @JoinColumn(name = "ID_INVENTARIONAC", referencedColumnName = "ID_INVENTARIONAC")
+    @ManyToOne
+    private InventarioNacional idInventarionac;
     @JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO")
     @ManyToOne
     private Sitio idSitio;
-    @OneToMany(mappedBy = "idInventariovacuna")
-    private Collection<Vacuna> vacunaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idInventario")
+    private Collection<VacunaInv> vacunaInvCollection;
 
     public InventarioVacunas() {
     }
@@ -60,28 +56,20 @@ public class InventarioVacunas implements Serializable {
         this.idInventario = idInventario;
     }
 
-    public String getLote() {
-        return lote;
-    }
-
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public Integer getIdInventario() {
         return idInventario;
     }
 
     public void setIdInventario(Integer idInventario) {
         this.idInventario = idInventario;
+    }
+
+    public InventarioNacional getIdInventarionac() {
+        return idInventarionac;
+    }
+
+    public void setIdInventarionac(InventarioNacional idInventarionac) {
+        this.idInventarionac = idInventarionac;
     }
 
     public Sitio getIdSitio() {
@@ -93,12 +81,12 @@ public class InventarioVacunas implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Vacuna> getVacunaCollection() {
-        return vacunaCollection;
+    public Collection<VacunaInv> getVacunaInvCollection() {
+        return vacunaInvCollection;
     }
 
-    public void setVacunaCollection(Collection<Vacuna> vacunaCollection) {
-        this.vacunaCollection = vacunaCollection;
+    public void setVacunaInvCollection(Collection<VacunaInv> vacunaInvCollection) {
+        this.vacunaInvCollection = vacunaInvCollection;
     }
 
     @Override

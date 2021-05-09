@@ -8,6 +8,7 @@ package co.edu.unipiloto.usuario.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -53,6 +54,8 @@ public class Sitio implements Serializable {
     private Administrador idAdministrador;
     @OneToMany(mappedBy = "idSitio")
     private Collection<InventarioVacunas> inventarioVacunasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSitio")
+    private Collection<PersonalVacunacion> personalVacunacionCollection;
     @OneToMany(mappedBy = "idSitio")
     private Collection<Cita> citaCollection;
 
@@ -102,6 +105,15 @@ public class Sitio implements Serializable {
 
     public void setInventarioVacunasCollection(Collection<InventarioVacunas> inventarioVacunasCollection) {
         this.inventarioVacunasCollection = inventarioVacunasCollection;
+    }
+
+    @XmlTransient
+    public Collection<PersonalVacunacion> getPersonalVacunacionCollection() {
+        return personalVacunacionCollection;
+    }
+
+    public void setPersonalVacunacionCollection(Collection<PersonalVacunacion> personalVacunacionCollection) {
+        this.personalVacunacionCollection = personalVacunacionCollection;
     }
 
     @XmlTransient

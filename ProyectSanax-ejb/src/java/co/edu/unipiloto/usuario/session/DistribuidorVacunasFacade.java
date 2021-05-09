@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.usuario.session;
 
-import co.edu.unipiloto.usuario.entity.Vacuna;
+import co.edu.unipiloto.usuario.entity.DistribuidorVacunas;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author jorge_j3qr4sd
  */
 @Stateless
-public class VacunaFacade extends AbstractFacade<Vacuna> implements VacunaFacadeLocal {
+public class DistribuidorVacunasFacade extends AbstractFacade<DistribuidorVacunas> implements DistribuidorVacunasFacadeLocal {
 
     @PersistenceContext(unitName = "UsuarioPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class VacunaFacade extends AbstractFacade<Vacuna> implements VacunaFacade
         return em;
     }
 
-    public VacunaFacade() {
-        super(Vacuna.class);
+    public DistribuidorVacunasFacade() {
+        super(DistribuidorVacunas.class);
     }
     
 }

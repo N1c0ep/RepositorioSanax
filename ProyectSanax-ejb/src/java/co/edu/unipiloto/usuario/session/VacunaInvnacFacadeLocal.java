@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.usuario.session;
 
-import co.edu.unipiloto.usuario.entity.Vacuna;
+import co.edu.unipiloto.usuario.entity.VacunaInvnac;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author jorge_j3qr4sd
  */
 @Local
-public interface VacunaFacadeLocal {
+public interface VacunaInvnacFacadeLocal {
 
-    void create(Vacuna vacuna);
+    void create(VacunaInvnac vacunaInvnac);
 
-    void edit(Vacuna vacuna);
+    void edit(VacunaInvnac vacunaInvnac);
 
-    void remove(Vacuna vacuna);
+    void remove(VacunaInvnac vacunaInvnac);
 
-    Vacuna find(Object id);
+    VacunaInvnac find(Object id);
 
-    List<Vacuna> findAll();
+    List<VacunaInvnac> findAll();
 
-    List<Vacuna> findRange(int[] range);
+    List<VacunaInvnac> findRange(int[] range);
 
     int count();
     

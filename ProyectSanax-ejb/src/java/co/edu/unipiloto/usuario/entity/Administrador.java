@@ -37,12 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Administrador.findByIdAdministrador", query = "SELECT a FROM Administrador a WHERE a.idAdministrador = :idAdministrador")
     , @NamedQuery(name = "Administrador.findByCorreo", query = "SELECT a FROM Administrador a WHERE a.correo = :correo")
     , @NamedQuery(name = "Administrador.findByFecha", query = "SELECT a FROM Administrador a WHERE a.fecha = :fecha")
-    , @NamedQuery(name = "Administrador.findByTelefono", query = "SELECT a FROM Administrador a WHERE a.telefono = :telefono")})
+    , @NamedQuery(name = "Administrador.findByTelefono", query = "SELECT a FROM Administrador a WHERE a.telefono = :telefono")
+    , @NamedQuery(name = "Administrador.findByContrasena", query = "SELECT a FROM Administrador a WHERE a.contrasena = :contrasena")})
 public class Administrador implements Serializable {
-
-    @Size(max = 50)
-    @Column(name = "TELEFONO")
-    private String telefono;
 
     private static final long serialVersionUID = 1L;
     @Size(max = 50)
@@ -62,6 +59,12 @@ public class Administrador implements Serializable {
     @Column(name = "FECHA")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @Size(max = 50)
+    @Column(name = "TELEFONO")
+    private String telefono;
+    @Size(max = 50)
+    @Column(name = "CONTRASENA")
+    private String contrasena;
     @OneToMany(mappedBy = "idAdministrador")
     private Collection<Sitio> sitioCollection;
 
@@ -112,6 +115,21 @@ public class Administrador implements Serializable {
         this.fecha = fecha;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 
     @XmlTransient
     public Collection<Sitio> getSitioCollection() {
@@ -145,14 +163,6 @@ public class Administrador implements Serializable {
     @Override
     public String toString() {
         return "co.edu.unipiloto.usuario.entity.Administrador[ idAdministrador=" + idAdministrador + " ]";
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
     
 }

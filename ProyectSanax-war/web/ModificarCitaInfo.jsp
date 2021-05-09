@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar cita - SANAX</title>
-        <h1>SANAX</h1>
+        <h1>Modificar cita</h1>
         <link rel="stylesheet" href="css/ModificarCitaInfo.css">
     </head>
     </div>
