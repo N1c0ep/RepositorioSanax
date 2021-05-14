@@ -12,6 +12,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Distribuidor</h1>
+        <h1>Bienvenido distribuidor</h1>
+        
+        <form action="./userInfo" method="POST">
+            <input type="button" class="bt1" value="Actualizar inventario nacional" OnClick="location.href='//localhost:8080/ProyectSanax-war/ActualizarInvNac.jsp'"/>
+            <br>
+            <input type="button" class="bt2" value="Consultar estado distribución de vacunas" OnClick="location.href='//localhost:8080/ProyectSanax-war/ConsultarEstVac.jsp'"/>
+            <br>
+            <input type="button" class="bt3" value="Asignación de vacunas" OnClick="location.href='//localhost:8080/ProyectSanax-war/AsignacionVac.jsp'"/>          
+        </form>
+            
     </body>
 </html>
