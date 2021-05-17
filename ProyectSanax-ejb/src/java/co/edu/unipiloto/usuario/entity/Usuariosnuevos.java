@@ -78,7 +78,7 @@ public class Usuariosnuevos implements Serializable {
     @Column(name = "DOSIS")
     private Integer dosis;
     
-    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono, int dosis) {
+    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localida, String telefono, String contrasena, String tipoDocumento, String direccion, int dosis) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

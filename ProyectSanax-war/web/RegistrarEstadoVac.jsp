@@ -20,9 +20,9 @@
                 <tr>                  
                         <td>Dosis</td>
                     <select name="dosis" value="${asig.dosis}">
-                        <option>0 Dosis</option>
-                        <option>1 Dosis</option>
-                        <option>2 Dosis</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
                     </select> 
                 </tr>
                 <tr>
