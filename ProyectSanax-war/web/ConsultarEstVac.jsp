@@ -22,16 +22,12 @@
             <table>
                 
                 <tr>
-                    <td>Fecha</td>
-                    <td><input type="date" name="fecha" value="${asig.fecha}" /></td>
-                </tr>
-                <tr>
-                    <td>Hora</td>
-                    <td><input type="time" name="hora" value="${asig.hora}" /></td>
+                    <td>Ingrese id del sitio</td>
+                    <td><input type="text" name="sitio" value="${asig.sitio}" /></td>
                 </tr> 
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="action" value="Add" />
+                        <input type="submit" name="action" value="Buscar" />
                     </td>
                 </tr>
             </table>

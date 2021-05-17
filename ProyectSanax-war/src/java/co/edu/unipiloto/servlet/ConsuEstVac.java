@@ -5,13 +5,21 @@
  */
 package co.edu.unipiloto.servlet;
 
+import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
+import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.SitioFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,6 +28,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ConsuEstVac", urlPatterns = {"/ConsuEstVac"})
 public class ConsuEstVac extends HttpServlet {
 
+    @EJB
+    private SitioFacadeLocal sitioFacade;
+
+    
+
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,17 +49,54 @@ public class ConsuEstVac extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+           HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+            
+            us = sitioFacade.find(Integer.parseInt(user));
+            
+            String action = request.getParameter("action");
+            String citaidStr = request.getParameter("cita");
+//            String idStr = request.getParameter("id");
+//            Integer id = 0;
+            Integer citaid = 0;
+            
+//            if (idStr != null && !idStr.equals("")) {
+//                id = Integer.parseInt(idStr);
+//            }
+            if (citaidStr != null && !citaidStr.equals("")) {
+                citaid = Integer.parseInt(citaidStr);
+            }
+        }
+    }
+    
+    public void mostrarMenu(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConsuEstVac</title>");            
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConsuEstVac at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
             out.println("</body>");
             out.println("</html>");
-        }
-    }
+  }
+    
+     public void mostrarMenu2(PrintWriter out){
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/CancelarInfo.jsp\" />");
+            out.println("</head>");
+            out.println("<body>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
+            out.println("</body>");
+            out.println("</html>");
+  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

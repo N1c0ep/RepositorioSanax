@@ -77,6 +77,7 @@ public class CancCitaInfo extends HttpServlet {
                         cita = c;
                     }
                 }
+                
             
 
             if (request.getParameter("action").equals("Delete")) {
