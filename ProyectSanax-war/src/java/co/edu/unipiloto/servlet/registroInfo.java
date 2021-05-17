@@ -116,7 +116,7 @@ public class registroInfo extends HttpServlet {
                     out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseña incorrecta\");\n" + "</script>");
                     out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
                 } else {
-                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo4.jsp\" />");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/RepresentanteSitio.jsp\" />");
                 }
             }
         }

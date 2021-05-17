@@ -62,7 +62,7 @@ public class userInfo extends HttpServlet {
             String tipo = request.getParameter("tipo");
             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
             convertido = fechaHora.parse(Fechanacimiento);
-            
+            int dosis = 0;
             String idStr = request.getParameter("id");
             Integer id = 0;
             
@@ -74,7 +74,7 @@ public class userInfo extends HttpServlet {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseñas no coinciden\");\n" + "</script>");
                 out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/userInfo.jsp\" />");
             } else {
-                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion);
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis);
                 
                 if (request.getParameter("action").equals("Add")) {
                     usuariosnuevosFacade.create(user);

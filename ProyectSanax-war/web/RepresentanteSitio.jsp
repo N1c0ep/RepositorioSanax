@@ -23,8 +23,7 @@
         
         <form action="./RepresentanteSitio" method="POST">
             <body>
-                <h1>Bienvenido distribuidor</h1>
-                <form action="./userInfo" method="POST">
+                <h1>Bienvenido Representante de Sitio</h1>
                     <input type="button" class="bt1" value="Actualizar inventario de vacunas" OnClick="location.href='//localhost:8080/ProyectSanax-war/ActualizarInventario.jsp'"/>
                     <br>
                     <input type="button" class="bt1" value="Consultar inventario de vacunas" OnClick="location.href='//localhost:8080/ProyectSanax-war/ConsultarInventario.jsp'"/>
@@ -40,7 +39,6 @@
                     <input type="button" class="bt3" value="Consultar pacientes vacunados por fase" OnClick="location.href='//localhost:8080/ProyectSanax-war/ConsultarPacientesVacunadosFase.jsp'"/>
                     <br>
                     <input type="button" class="bt3" value="Asignar pacientes a personal" OnClick="location.href='//localhost:8080/ProyectSanax-war/AsignarPersonal.jsp'"/>
-                </form>
             </body>
         </form>
     </body>

@@ -6,7 +6,6 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,34 +13,33 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jorge_j3qr4sd
+ * @author dlpol
  */
 @Entity
 @Table(name = "USUARIOSNUEVOS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuariosnuevos.findAll", query = "SELECT u FROM Usuariosnuevos u")
-    , @NamedQuery(name = "Usuariosnuevos.findById", query = "SELECT u FROM Usuariosnuevos u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuariosnuevos.findByNombre", query = "SELECT u FROM Usuariosnuevos u WHERE u.nombre = :nombre")
-    , @NamedQuery(name = "Usuariosnuevos.findByApellido", query = "SELECT u FROM Usuariosnuevos u WHERE u.apellido = :apellido")
-    , @NamedQuery(name = "Usuariosnuevos.findByCorreo", query = "SELECT u FROM Usuariosnuevos u WHERE u.correo = :correo")
-    , @NamedQuery(name = "Usuariosnuevos.findByFecha", query = "SELECT u FROM Usuariosnuevos u WHERE u.fecha = :fecha")
-    , @NamedQuery(name = "Usuariosnuevos.findByLocalidad", query = "SELECT u FROM Usuariosnuevos u WHERE u.localidad = :localidad")
-    , @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuariosnuevos.findByTipoDocumento", query = "SELECT u FROM Usuariosnuevos u WHERE u.tipoDocumento = :tipoDocumento")
-    , @NamedQuery(name = "Usuariosnuevos.findByDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion")
-    , @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono")})
+    @NamedQuery(name = "Usuariosnuevos.findAll", query = "SELECT u FROM Usuariosnuevos u"),
+    @NamedQuery(name = "Usuariosnuevos.findById", query = "SELECT u FROM Usuariosnuevos u WHERE u.id = :id"),
+    @NamedQuery(name = "Usuariosnuevos.findByNombre", query = "SELECT u FROM Usuariosnuevos u WHERE u.nombre = :nombre"),
+    @NamedQuery(name = "Usuariosnuevos.findByApellido", query = "SELECT u FROM Usuariosnuevos u WHERE u.apellido = :apellido"),
+    @NamedQuery(name = "Usuariosnuevos.findByCorreo", query = "SELECT u FROM Usuariosnuevos u WHERE u.correo = :correo"),
+    @NamedQuery(name = "Usuariosnuevos.findByFecha", query = "SELECT u FROM Usuariosnuevos u WHERE u.fecha = :fecha"),
+    @NamedQuery(name = "Usuariosnuevos.findByLocalidad", query = "SELECT u FROM Usuariosnuevos u WHERE u.localidad = :localidad"),
+    @NamedQuery(name = "Usuariosnuevos.findByTipoDocumento", query = "SELECT u FROM Usuariosnuevos u WHERE u.tipoDocumento = :tipoDocumento"),
+    @NamedQuery(name = "Usuariosnuevos.findByDireccion", query = "SELECT u FROM Usuariosnuevos u WHERE u.direccion = :direccion"),
+    @NamedQuery(name = "Usuariosnuevos.findByTelefono", query = "SELECT u FROM Usuariosnuevos u WHERE u.telefono = :telefono"),
+    @NamedQuery(name = "Usuariosnuevos.findByContrasena", query = "SELECT u FROM Usuariosnuevos u WHERE u.contrasena = :contrasena"),
+    @NamedQuery(name = "Usuariosnuevos.findByDosis", query = "SELECT u FROM Usuariosnuevos u WHERE u.dosis = :dosis")})
 public class Usuariosnuevos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,13 +48,13 @@ public class Usuariosnuevos implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "NOMBRE")
     private String nombre;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "APELLIDO")
     private String apellido;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "CORREO")
     private String correo;
     @Column(name = "FECHA")
@@ -66,28 +64,21 @@ public class Usuariosnuevos implements Serializable {
     @Column(name = "LOCALIDAD")
     private String localidad;
     @Size(max = 50)
-    @Column(name = "CONTRASENA")
-    private String contrasena;
-    @Size(max = 50)
     @Column(name = "TIPO_DOCUMENTO")
     private String tipoDocumento;
     @Size(max = 50)
     @Column(name = "DIRECCION")
     private String direccion;
-    @Size(max = 50)
+    @Size(max = 10)
     @Column(name = "TELEFONO")
     private String telefono;
-    @OneToMany(mappedBy = "identificacion")
-    private Collection<Cita> citaCollection;
-
-    public Usuariosnuevos() {
-    }
-
-    public Usuariosnuevos(Integer id) {
-        this.id = id;
-    }
+    @Size(max = 50)
+    @Column(name = "CONTRASENA")
+    private String contrasena;
+    @Column(name = "DOSIS")
+    private Integer dosis;
     
-    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono) {
+    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono, int dosis) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -98,6 +89,14 @@ public class Usuariosnuevos implements Serializable {
         this.tipoDocumento = tipoDocumento;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.dosis = dosis;
+    }
+
+    public Usuariosnuevos() {
+    }
+
+    public Usuariosnuevos(Integer id) {
+        this.id = id;
     }
 
     public Integer getId() {
@@ -148,14 +147,6 @@ public class Usuariosnuevos implements Serializable {
         this.localidad = localidad;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
     public String getTipoDocumento() {
         return tipoDocumento;
     }
@@ -180,13 +171,20 @@ public class Usuariosnuevos implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
-    public Collection<Cita> getCitaCollection() {
-        return citaCollection;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setCitaCollection(Collection<Cita> citaCollection) {
-        this.citaCollection = citaCollection;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Integer getDosis() {
+        return dosis;
+    }
+
+    public void setDosis(Integer dosis) {
+        this.dosis = dosis;
     }
 
     @Override
