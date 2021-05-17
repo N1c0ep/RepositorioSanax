@@ -7,13 +7,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/AsignacionVac.css">
+        <title>Asignar Vacs - SANAX</title>
+        <h1>Asignacion Vacunas</h1>
         <title>JSP Page</title>
     </head>
+    </div>
     <body>
-        <h1>Asignacion vacunas!</h1>
-        
         <form action="./AsignaVac" method="POST">
             <table>
                 
