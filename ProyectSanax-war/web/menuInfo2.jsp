@@ -7,12 +7,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/menuInfo2.css">
+        
+        <title>Menu - SANAX DISTRIBUIDOR</title>
+        <h1>Bienvenido Distribuidor</h1>
         <title>JSP Page</title>
+        
     </head>
+    
+    </div>
+    
     <body>
-        <h1>Bienvenido distribuidor</h1>
         
         <form action="./userInfo" method="POST">
             <input type="button" class="bt1" value="Actualizar inventario nacional" OnClick="location.href='//localhost:8080/ProyectSanax-war/ActualizarInvNac.jsp'"/>

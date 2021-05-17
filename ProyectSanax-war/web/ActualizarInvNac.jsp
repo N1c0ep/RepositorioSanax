@@ -7,12 +7,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <div class="cabecera">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/menuInfo2.css">
+        
+        <title>Menu - SANAX</title>
+        <h1>Actualizar Inventario Nacional</h1>
         <title>JSP Page</title>
     </head>
+    </div>
     <body>
-        <h1>Actualizar inventario nacional!</h1>
                 <form action="./ActualizarInvNac" method="POST">
             <table>
                 
