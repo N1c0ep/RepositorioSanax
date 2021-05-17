@@ -6,6 +6,7 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Sitio;
 import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
 import co.edu.unipiloto.usuario.session.SitioFacadeLocal;
@@ -51,25 +52,35 @@ public class ConsuEstVac extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
            HttpSession objsession = request.getSession(false);
-            String user = (String) objsession.getAttribute("id1");
-            
-            //us = sitioFacade.find(Integer.parseInt(user));
+           
+     
+           
             
             String action = request.getParameter("action");
-            String citaidStr = request.getParameter("cita");
-//            String idStr = request.getParameter("id");
-//            Integer id = 0;
-            Integer citaid = 0;
+            if (request.getParameter("action").equals("Buscar")){
+                String citaidStr = request.getParameter("sitio");
+                int aux=Integer.parseInt(citaidStr);
+
+                
+                Integer citaid = 0;
             
-//            if (idStr != null && !idStr.equals("")) {
-//                id = Integer.parseInt(idStr);
-//            }
-            if (citaidStr != null && !citaidStr.equals("")) {
-                citaid = Integer.parseInt(citaidStr);
+         
+                Sitio sitio= null;
+               
+                      for (Sitio c : sitioFacade.findAll()) {
+                                if (c.getIdSitio()==aux) {
+                                  sitio =c;  
+
+                                }
+                    }
+                    request.setAttribute("rows", sitio);
+                    request.getRequestDispatcher("ConsuEstVac.jsp").forward(request, response);
+           
             }
-        }
+            
+            
     }
-    
+    }
     public void mostrarMenu(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
