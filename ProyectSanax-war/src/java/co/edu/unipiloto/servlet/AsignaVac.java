@@ -33,6 +33,12 @@ public class AsignaVac extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            
+            
+            //Se debe ingresar los datos del inventario vacuna nacional y por ende conectar a inventario nacional
+            
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");

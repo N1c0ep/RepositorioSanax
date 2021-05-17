@@ -87,7 +87,7 @@ public class Usuariosnuevos implements Serializable {
         this.id = id;
     }
     
-       public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono) {
+    public Usuariosnuevos(Integer id, String nombre, String apellido, String correo, Date fecha, String localidad, String contrasena, String tipoDocumento, String direccion, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

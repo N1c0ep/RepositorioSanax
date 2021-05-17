@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -43,9 +41,8 @@ public class InventarioNacional implements Serializable {
     private Collection<InventarioVacunas> inventarioVacunasCollection;
     @OneToMany(mappedBy = "idInventarionac")
     private Collection<VacunaInvnac> vacunaInvnacCollection;
-    @JoinColumn(name = "ID_DISTRIBUIDOR", referencedColumnName = "ID_DISTRIBUIDOR")
-    @ManyToOne
-    private DistribuidorVacunas idDistribuidor;
+    @OneToMany(mappedBy = "idInvnac")
+    private Collection<DistribuidorVacunas> distribuidorVacunasCollection;
 
     public InventarioNacional() {
     }
@@ -80,12 +77,13 @@ public class InventarioNacional implements Serializable {
         this.vacunaInvnacCollection = vacunaInvnacCollection;
     }
 
-    public DistribuidorVacunas getIdDistribuidor() {
-        return idDistribuidor;
+    @XmlTransient
+    public Collection<DistribuidorVacunas> getDistribuidorVacunasCollection() {
+        return distribuidorVacunasCollection;
     }
 
-    public void setIdDistribuidor(DistribuidorVacunas idDistribuidor) {
-        this.idDistribuidor = idDistribuidor;
+    public void setDistribuidorVacunasCollection(Collection<DistribuidorVacunas> distribuidorVacunasCollection) {
+        this.distribuidorVacunasCollection = distribuidorVacunasCollection;
     }
 
     @Override

@@ -53,7 +53,7 @@ public class ConsuEstVac extends HttpServlet {
            HttpSession objsession = request.getSession(false);
             String user = (String) objsession.getAttribute("id1");
             
-            us = sitioFacade.find(Integer.parseInt(user));
+            //us = sitioFacade.find(Integer.parseInt(user));
             
             String action = request.getParameter("action");
             String citaidStr = request.getParameter("cita");

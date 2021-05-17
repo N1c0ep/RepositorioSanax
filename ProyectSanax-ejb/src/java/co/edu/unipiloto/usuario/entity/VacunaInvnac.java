@@ -6,7 +6,6 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,8 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -60,11 +57,9 @@ public class VacunaInvnac implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "LOTE")
     private String lote;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 50)
     @Column(name = "VENCIMIENTO")
-    @Temporal(TemporalType.DATE)
-    private Date vencimiento;
+    private String vencimiento;
     @JoinColumn(name = "ID_INVENTARIONAC", referencedColumnName = "ID_INVENTARIONAC")
     @ManyToOne
     private InventarioNacional idInventarionac;
@@ -76,12 +71,12 @@ public class VacunaInvnac implements Serializable {
         this.idVacuna = idVacuna;
     }
 
-    public VacunaInvnac(Integer idVacuna, String marca, int cantidad, String lote, Date vencimiento) {
-        this.idVacuna = idVacuna;
+    public VacunaInvnac( String marca, int cantidad, String lote, String vencimiento,InventarioNacional idInventarionac) {
         this.marca = marca;
         this.cantidad = cantidad;
         this.lote = lote;
-        this.vencimiento = vencimiento;
+        this.vencimiento=vencimiento;
+        this.idInventarionac=idInventarionac;
     }
 
     public Integer getIdVacuna() {
@@ -116,11 +111,11 @@ public class VacunaInvnac implements Serializable {
         this.lote = lote;
     }
 
-    public Date getVencimiento() {
+    public String getVencimiento() {
         return vencimiento;
     }
 
-    public void setVencimiento(Date vencimiento) {
+    public void setVencimiento(String vencimiento) {
         this.vencimiento = vencimiento;
     }
 
