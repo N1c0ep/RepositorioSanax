@@ -33,8 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "VacunaInvnac.findByIdVacuna", query = "SELECT v FROM VacunaInvnac v WHERE v.idVacuna = :idVacuna")
     , @NamedQuery(name = "VacunaInvnac.findByMarca", query = "SELECT v FROM VacunaInvnac v WHERE v.marca = :marca")
     , @NamedQuery(name = "VacunaInvnac.findByCantidad", query = "SELECT v FROM VacunaInvnac v WHERE v.cantidad = :cantidad")
-    , @NamedQuery(name = "VacunaInvnac.findByLote", query = "SELECT v FROM VacunaInvnac v WHERE v.lote = :lote")
-    , @NamedQuery(name = "VacunaInvnac.findByVencimiento", query = "SELECT v FROM VacunaInvnac v WHERE v.vencimiento = :vencimiento")})
+    , @NamedQuery(name = "VacunaInvnac.findByVencimiento", query = "SELECT v FROM VacunaInvnac v WHERE v.vencimiento = :vencimiento")
+    , @NamedQuery(name = "VacunaInvnac.findByLote", query = "SELECT v FROM VacunaInvnac v WHERE v.lote = :lote")})
 public class VacunaInvnac implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,14 +52,11 @@ public class VacunaInvnac implements Serializable {
     @NotNull
     @Column(name = "CANTIDAD")
     private int cantidad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "LOTE")
-    private String lote;
     @Size(max = 50)
     @Column(name = "VENCIMIENTO")
     private String vencimiento;
+    @Column(name = "LOTE")
+    private Integer lote;
     @JoinColumn(name = "ID_INVENTARIONAC", referencedColumnName = "ID_INVENTARIONAC")
     @ManyToOne
     private InventarioNacional idInventarionac;
@@ -71,13 +68,15 @@ public class VacunaInvnac implements Serializable {
         this.idVacuna = idVacuna;
     }
 
-    public VacunaInvnac( String marca, int cantidad, String lote, String vencimiento,InventarioNacional idInventarionac) {
+    public VacunaInvnac(String marca, int cantidad, String vencimiento, Integer lote, InventarioNacional idInventarionac) {
         this.marca = marca;
         this.cantidad = cantidad;
+        this.vencimiento = vencimiento;
         this.lote = lote;
-        this.vencimiento=vencimiento;
-        this.idInventarionac=idInventarionac;
+        this.idInventarionac = idInventarionac;
     }
+
+    
 
     public Integer getIdVacuna() {
         return idVacuna;
@@ -103,20 +102,20 @@ public class VacunaInvnac implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public String getLote() {
-        return lote;
-    }
-
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
-
     public String getVencimiento() {
         return vencimiento;
     }
 
     public void setVencimiento(String vencimiento) {
         this.vencimiento = vencimiento;
+    }
+
+    public Integer getLote() {
+        return lote;
+    }
+
+    public void setLote(Integer lote) {
+        this.lote = lote;
     }
 
     public InventarioNacional getIdInventarionac() {

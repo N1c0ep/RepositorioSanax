@@ -56,6 +56,13 @@ public class InventarioVacunas implements Serializable {
         this.idInventario = idInventario;
     }
 
+    public InventarioVacunas(InventarioNacional idInventarionac, Sitio idSitio) {
+        this.idInventarionac = idInventarionac;
+        this.idSitio = idSitio;
+    }
+    
+    
+
     public Integer getIdInventario() {
         return idInventario;
     }

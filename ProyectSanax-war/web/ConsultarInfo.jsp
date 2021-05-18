@@ -29,9 +29,9 @@
                         <input type="submit" name="action" value="Menu" />
                     </td>
                 </tr>
-                <sql:setDataSource var = "bd" driver = "org.apache.derby.jdbc.ClientDriver"
-                                   url = "jdbc:derby://localhost:1527/UsuariosReg"
-                                   user = "root1234"  password = "root1234"/>
+                    <sql:setDataSource var = "bd" driver = "org.apache.derby.jdbc.ClientDriver"
+                                       url = "jdbc:derby://localhost:1527/UsuariosReg"
+                                       user = "root1234"  password = "root1234"/>
                 <tr>                   
                     <td>
                         <sql:query var = "result" dataSource = "${bd}">

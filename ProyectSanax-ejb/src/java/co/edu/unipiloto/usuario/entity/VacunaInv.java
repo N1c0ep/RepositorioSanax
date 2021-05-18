@@ -6,7 +6,6 @@
 package co.edu.unipiloto.usuario.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,8 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,8 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "VacunaInv.findByIdVacuna", query = "SELECT v FROM VacunaInv v WHERE v.idVacuna = :idVacuna")
     , @NamedQuery(name = "VacunaInv.findByDistribuidor", query = "SELECT v FROM VacunaInv v WHERE v.distribuidor = :distribuidor")
     , @NamedQuery(name = "VacunaInv.findByLote", query = "SELECT v FROM VacunaInv v WHERE v.lote = :lote")
-    , @NamedQuery(name = "VacunaInv.findByVencimiento", query = "SELECT v FROM VacunaInv v WHERE v.vencimiento = :vencimiento")
-    , @NamedQuery(name = "VacunaInv.findByCantidad", query = "SELECT v FROM VacunaInv v WHERE v.cantidad = :cantidad")})
+    , @NamedQuery(name = "VacunaInv.findByCantidad", query = "SELECT v FROM VacunaInv v WHERE v.cantidad = :cantidad")
+    , @NamedQuery(name = "VacunaInv.findByVencimiento", query = "SELECT v FROM VacunaInv v WHERE v.vencimiento = :vencimiento")})
 public class VacunaInv implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,13 +54,11 @@ public class VacunaInv implements Serializable {
     private int lote;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "VENCIMIENTO")
-    @Temporal(TemporalType.DATE)
-    private Date vencimiento;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "CANTIDAD")
     private int cantidad;
+    @Size(max = 50)
+    @Column(name = "VENCIMIENTO")
+    private String vencimiento;
     @JoinColumn(name = "ID_INVENTARIO", referencedColumnName = "ID_INVENTARIO")
     @ManyToOne(optional = false)
     private InventarioVacunas idInventario;
@@ -75,12 +70,12 @@ public class VacunaInv implements Serializable {
         this.idVacuna = idVacuna;
     }
 
-    public VacunaInv(Integer idVacuna, String distribuidor, int lote, Date vencimiento, int cantidad) {
-        this.idVacuna = idVacuna;
+    public VacunaInv( String distribuidor, int lote,String vencimiento, int cantidad, InventarioVacunas vac) {
         this.distribuidor = distribuidor;
         this.lote = lote;
-        this.vencimiento = vencimiento;
         this.cantidad = cantidad;
+        this.vencimiento=vencimiento;
+        this.idInventario=vac;
     }
 
     public Integer getIdVacuna() {
@@ -107,20 +102,20 @@ public class VacunaInv implements Serializable {
         this.lote = lote;
     }
 
-    public Date getVencimiento() {
-        return vencimiento;
-    }
-
-    public void setVencimiento(Date vencimiento) {
-        this.vencimiento = vencimiento;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getVencimiento() {
+        return vencimiento;
+    }
+
+    public void setVencimiento(String vencimiento) {
+        this.vencimiento = vencimiento;
     }
 
     public InventarioVacunas getIdInventario() {

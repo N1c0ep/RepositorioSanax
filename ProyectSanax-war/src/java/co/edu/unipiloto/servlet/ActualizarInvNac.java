@@ -69,7 +69,7 @@ public class ActualizarInvNac extends HttpServlet {
             String action = request.getParameter("action");
             String venci = request.getParameter("venci");
             int cant = Integer.parseInt(request.getParameter("canti"));
-            String lote = request.getParameter("lote");
+            int lote = Integer.parseInt(request.getParameter("lote"));
             String marca = request.getParameter("marca");
             VacunaInvnac lol = null;
             VacunaInvnac lol2=null;
@@ -87,8 +87,8 @@ public class ActualizarInvNac extends HttpServlet {
                             }
                         }
                         if (marca.equals("Pfizer") && c.getMarca().equals("Pfizer")) {
-                            if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {                               
-                                VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                            if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {                               
+                                VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                 vacunaInvnacFacade.create(vac);
                                 break;
                             } else {
@@ -97,8 +97,8 @@ public class ActualizarInvNac extends HttpServlet {
                                 break;
                             }
                         } else if (marca.equals("Janssen") && c.getMarca().equals("Janssen")) {
-                            if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                            if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                 vacunaInvnacFacade.create(vac);
                                 break;
                             } else {
@@ -107,8 +107,8 @@ public class ActualizarInvNac extends HttpServlet {
                                 break;
                             }
                         } else if (marca.equals("AstraZeneca") && c.getMarca().equals("AstraZeneca")) {
-                            if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                            if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                 vacunaInvnacFacade.create(vac);
                                 break;
                             } else {
@@ -117,8 +117,8 @@ public class ActualizarInvNac extends HttpServlet {
                                 break;
                             }
                         } else if (marca.equals("Sinovac") && c.getMarca().equals("Sinovac")) {
-                            if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                            if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                 vacunaInvnacFacade.create(vac);
                                 break;
                             } else {
@@ -135,8 +135,8 @@ public class ActualizarInvNac extends HttpServlet {
                             out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/ActualizarInvNac.jsp\" />");
                         } else {
                             if (marca.equals("Pfizer") && c.getMarca().equals("Pfizer")) {
-                                if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                                if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                     vacunaInvnacFacade.create(vac);
                                     break;
                                 } else {
@@ -145,8 +145,8 @@ public class ActualizarInvNac extends HttpServlet {
                                     break;
                                 }
                             } else if (marca.equals("Janssen") && c.getMarca().equals("Janssen")) {
-                                if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                                if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                     vacunaInvnacFacade.create(vac);
                                     break;
                                 } else {
@@ -155,8 +155,8 @@ public class ActualizarInvNac extends HttpServlet {
                                     break;
                                 }
                             } else if (marca.equals("AstraZeneca") && c.getMarca().equals("AstraZeneca")) {
-                                if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                                if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                     vacunaInvnacFacade.create(vac);
                                     break;
                                 } else {
@@ -165,8 +165,8 @@ public class ActualizarInvNac extends HttpServlet {
                                     break;
                                 }
                             } else if (marca.equals("Sinovac") && c.getMarca().equals("Sinovac")) {
-                                if (!lote.equals(c.getLote()) || !venci.equals(c.getVencimiento())) {
-                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, lote, venci, inventarioNacionalFacade.find(1));
+                                if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {
+                                    VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));
                                     vacunaInvnacFacade.create(vac);
                                     break;
                                 } else {
