@@ -42,7 +42,7 @@
             </body>
         </form>
     </body>
-    
+    <a href="http://localhost:8080/ProyectSanax-war/index.html"> Salir </a>
     
     
     

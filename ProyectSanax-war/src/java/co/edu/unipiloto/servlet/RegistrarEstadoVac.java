@@ -46,19 +46,7 @@ public class RegistrarEstadoVac extends HttpServlet {
                     
             String action = request.getParameter("action");
             int dosis = Integer.parseInt(request.getParameter("dosis")) ;
-            System.out.println("------> "+dosis);
-            if (dosis == 1) {
-                us.setDosis(dosis);
-            }
-            else{
-                if(dosis == 2){
-                    us.setDosis(dosis);
-                }
-                else{
-                    us.setDosis(dosis);
-                }
-            }
-                
+            us.setDosis(dosis);
             usuariosnuevosFacade.edit(us);
             out.print("<script type=\"text/javascript\">\n" + " alert(\"Se ha modifica la cita correctamente \");\n" + "</script>");
             mostrarMenu(out);

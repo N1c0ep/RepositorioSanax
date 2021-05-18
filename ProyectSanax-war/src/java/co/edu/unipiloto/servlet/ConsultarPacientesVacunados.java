@@ -5,8 +5,14 @@
  */
 package co.edu.unipiloto.servlet;
 
+import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
+import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
+import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +25,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ConsultarPacientesVacunados", urlPatterns = {"/ConsultarPacientesVacunados"})
 public class ConsultarPacientesVacunados extends HttpServlet {
+    
+    @EJB
+    private UsuariosnuevosFacadeLocal usuariosnuevosFacade;
+
+    @EJB
+    private CitaFacadeLocal citaFacade;
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +47,49 @@ public class ConsultarPacientesVacunados extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String action = request.getParameter("action");
+            int idsitio = Integer.parseInt(request.getParameter("sitiosVac"));
+            if (request.getParameter("action").equals("Buscar")) {
+                Usuariosnuevos users = null;
+                Cita cita = null;
+                ArrayList<Cita> listaCita = new ArrayList<>();
+                ArrayList<Usuariosnuevos> listaUsers = new ArrayList<>();
+                for (Cita c : citaFacade.findAll()) {
+                    if (c.getIdSitio().getIdSitio()==idsitio) {
+                        cita = c;
+                        listaCita.add(cita);
+                        
+                    }
+                }
+                for (int i = 0; i < listaCita.size(); i++) {
+                    if(listaCita.get(i).getIdentificacion().getDosis()==2){
+                        listaUsers.add(listaCita.get(i).getIdentificacion());
+                    }
+                }
+                request.setAttribute("rows", listaUsers);
+                    request.getRequestDispatcher("ConsultarPacientesVacunados.jsp").forward(request, response);
+                     
+                
+            }
+            else{
+                mostrarMenu(out); 
+            }
+        }
+    }
+    
+    public void mostrarMenu(PrintWriter out){
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConsultarPacientesVacunados</title>");            
+            out.println("<title>Servlet userInfo</title>");           
+            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/RepresentanteSitio.jsp\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConsultarPacientesVacunados at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
             out.println("</body>");
             out.println("</html>");
-        }
-    }
+  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
