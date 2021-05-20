@@ -17,11 +17,11 @@
         <form method="POST">
             <input type="button" class="bt1" value="Seleccionar lugar vacunacion" OnClick="location.href='//localhost:8080/ProyectSanax-war/PersonalVacLug.jsp'"/>
             <br>
-            <input type="button" class="bt2" value="Consultar asignacion a vacunar" OnClick="location.href=''"/>
+            <input type="button" class="bt2" value="Consultar asignacion a vacunar" OnClick="location.href='//localhost:8080/ProyectSanax-war/PersonalConsuVac.jsp'"/>
             <br>
             <input type="button" class="bt3" value="Consultar personas vacunadas" OnClick="location.href='//localhost:8080/ProyectSanax-war/PersonalVacunados.jsp'"/>          
             <br>
-            <input type="button" class="bt3" value="Realizar reporte de vacunación" OnClick="location.href=''"/>          
+            <input type="button" class="bt3" value="Realizar reporte de vacunación" OnClick="location.href='//localhost:8080/ProyectSanax-war/PersonalReporteVac.jsp'"/>          
         </form>
     </body>
 </html>
