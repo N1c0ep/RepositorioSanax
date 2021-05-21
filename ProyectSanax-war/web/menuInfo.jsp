@@ -6,7 +6,7 @@
 HttpSession objsession = request.getSession(false);
             String id = (String) objsession.getAttribute("id1");
    if (id.equals("")) {
-           response.sendRedirect("index.html");
+           response.sendRedirect("Ingresar1.html");
        }
          
 %>
