@@ -1,5 +1,5 @@
 .u-section-1 {
-  background-image: url("images/cbdcdba2c3d2a70b362554a6b4fd749a.jpeg");
+  background-image: url("../images/cbdcdba2c3d2a70b362554a6b4fd749a.jpeg");
   background-position: 50% 50%;
 }
 
@@ -814,7 +814,7 @@
 }
 
 .u-section-4 .u-image-1 {
-  background-image: url("images/c711b9a56700bd1c8b0294e95256ec28.jpeg");
+  background-image: url("../images/c711b9a56700bd1c8b0294e95256ec28.jpeg");
   min-height: 437px;
   background-position: 50% 50%;
 }
@@ -1868,7 +1868,7 @@
 
 .u-section-8 .u-image-1 {
   min-height: 400px;
-  background-image: url("images/coronavirus-mitos-verdades-rumores-oms.jpg");
+  background-image: url("../images/coronavirus-mitos-verdades-rumores-oms.jpg");
   background-position: 50% 50%;
 }
 
@@ -1960,7 +1960,7 @@
     min-height: 239px;
   }
 }.u-section-9 {
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("images/810dc7e89cb914e52e35de4c16bb3b0c7bdc600a5c942401172d165ea8b62961674dde3ce4b6e802673800a73c2f4de91a0ff87a549d907aa08417_1280.jpg");
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("../images/810dc7e89cb914e52e35de4c16bb3b0c7bdc600a5c942401172d165ea8b62961674dde3ce4b6e802673800a73c2f4de91a0ff87a549d907aa08417_1280.jpg");
   background-position: 50% 50%;
 }
 
