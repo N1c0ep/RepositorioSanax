@@ -72,7 +72,7 @@ public class userInfo extends HttpServlet {
             
             if (!contrasena.equals(confirmacion)) {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseñas no coinciden\");\n" + "</script>");
-                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/userInfo.jsp\" />");
+                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/Registrarse.jsp\" />");
             } else {
                 user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis);
                 

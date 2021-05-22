@@ -38,7 +38,7 @@
     <meta property="og:url" content="index.html">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-00da"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
+        <a href="https://estevezpacheco10.wixsite.com/sanax" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
           <img src="images/Capturadepantalla2021-05-20162406.png" class="u-logo-image u-logo-image-1" data-image-width="291.1113">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -52,7 +52,7 @@
           </div>
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="index.html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Registrarse.html" style="padding: 10px 20px;">Registrarse</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Registrarse.jsp" style="padding: 10px 20px;">Registrarse</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -60,7 +60,7 @@
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Coronavirus-(COVID-19).html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Registrarse.html" style="padding: 10px 20px;">Registrarse</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Registrarse.jsp" style="padding: 10px 20px;">Registrarse</a>
 </li></ul>
               </div>
             </div>

@@ -45,7 +45,7 @@
     <meta property="og:url" content="index.html">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-00da"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
+        <a href="https://estevezpacheco10.wixsite.com/sanax" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
           <img src="images/Capturadepantalla2021-05-20162406.png" class="u-logo-image u-logo-image-1" data-image-width="291.1113">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -67,7 +67,7 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Inicio.html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Ingresar.jsp" style="padding: 10px 20px;">Ingresar</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Registrarse</a>
 </li></ul>

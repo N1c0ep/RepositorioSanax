@@ -15,7 +15,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Registrarse</title>
     <link rel="stylesheet" href="css/nicepage.css" media="screen">
-<link rel="stylesheet" href="css/Registrarse.css" media="screen">
+    <link rel="stylesheet" href="css/Registrarse.css" media="screen">
     <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
@@ -37,7 +37,7 @@
     <meta property="og:url" content="index.html">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-00da"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
+        <a href="https://estevezpacheco10.wixsite.com/sanax" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
           <img src="images/Capturadepantalla2021-05-20162406.png" class="u-logo-image u-logo-image-1" data-image-width="291.1113">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -52,7 +52,6 @@
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="index.html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Ingresar.html" style="padding: 10px 20px;">Ingresar</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Registrarse.html" style="padding: 10px 20px;">Registrarse</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -60,8 +59,7 @@
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Coronavirus-(COVID-19).html" style="padding: 10px 20px;">Coronavirus (COVID-19)</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Ingresar1.jsp" style="padding: 10px 20px;">Ingresar</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Registrarse.jsp" style="padding: 10px 20px;">Registrarse</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Ingresar.jsp" style="padding: 10px 20px;">Ingresar</a>
 </li></ul>
               </div>
             </div>
@@ -80,46 +78,50 @@
               <div class="u-container-layout u-valign-middle u-container-layout-2">
                 <h2 class="u-custom-font u-font-oswald u-text u-text-body-alt-color u-text-1">Registro</h2>
                 <div class="u-form u-form-1">
-                  <form action="#" method="POST" class="u-block-3ec0-21 u-clearfix u-form-spacing-40 u-form-vertical u-inner-form" source="custom">
-                    <div class="u-form-group u-form-name u-form-group-1">
+                  <form action="./userInfo" method="POST" source="custom">
+                    <select name="tipo" class="u-text u-text-3 u-black" value="${user.tipo}">
+                    <option>Cedula de ciudadania</option>
+                    <option>Tarjeta de identidad</option>
+                    </select>
+                      <div class="u-form-group u-form-name u-form-group-1">
                       <label for="name-e4cc" class="u-form-control-hidden u-label u-text-body-alt-color" wfd-invisible="true">Name</label>
-                      <input type="text" placeholder="Ingrese su Nombre" id="name-e4cc" name="name" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="text" placeholder="Ingrese su Nombre" id="name-e4cc" name="firstname" value="${user.nombre}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
                     <div class="u-form-group u-form-name u-form-group-2">
                       <label for="name-fb0f" class="u-form-control-hidden u-label u-text-body-alt-color">Nombre</label>
-                      <input type="text" placeholder="Ingrese su Apellido" id="name-fb0f" name="name-1" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="text" placeholder="Ingrese su Apellido" id="name-fb0f" name="lastname" value="${user.apellido}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
                     <div class="u-form-email u-form-group u-form-group-3">
                       <label for="email-e4cc" class="u-form-control-hidden u-label u-text-body-alt-color" wfd-invisible="true">Email</label>
-                      <input type="email" placeholder="Enter a valid email address" id="email-e4cc" name="email" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="email" placeholder="Enter a valid email address" id="email-e4cc" name="email" value="${user.correo}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
-                    <div class="u-form-date u-form-group u-form-group-4">
+                    <div class="u-form-group u-form-group-4">
                       <label for="date-3a41" class="u-form-control-hidden u-label u-text-body-alt-color">Date</label>
-                      <input type="date" placeholder="MM/DD/YYYY" id="date-3a41" name="date" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="text" placeholder="YYYY/MM/DD" id="date-3a41" name="birth" value="${user.fecha}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
                     <div class="u-form-group u-form-partition-factor-2 u-form-group-5">
-                      <label for="text-8517" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Ingrese su Residencia" id="text-8517" name="text" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <label for="text-8517" class="u-form-control-hidden u-label u-text-body-alt-color">Localidad</label>
+                      <input type="text" placeholder="Ingrese su Residencia" id="text-8517" name="location" value="${user.localidad}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
                     </div>
                     <div class="u-form-address u-form-group u-form-partition-factor-2 u-form-group-6">
                       <label for="address-e0df" class="u-form-control-hidden u-label u-text-body-alt-color">Dirección</label>
-                      <input type="text" placeholder="Ingrese su dirección" id="address-e0df" name="address" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="text" placeholder="Ingrese su dirección" id="address-e0df" name="direccion" value="${user.direccion}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
                     <div class="u-form-group u-form-partition-factor-2 u-form-group-7">
                       <label for="text-8ddb" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Ingrese un ID-Usuario" id="text-8ddb" name="text-3" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <input type="text" placeholder="Ingrese un ID-Usuario" id="text-8ddb" name="id" value="${user.id}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
                     </div>
                     <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-8">
                       <label for="phone-1edc" class="u-form-control-hidden u-label u-text-body-alt-color">Teléfono</label>
-                      <input type="tel" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="Ingrese su teléfono (por ejemplo, +14155552675)" id="phone-1edc" name="phone" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                      <input type="tel" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="Ingrese su teléfono (por ejemplo, +14155552675)" id="phone-1edc" name="telephone" value="${user.telefono}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
-                    <div class="u-form-group u-form-partition-factor-2 u-form-group-9">
+                    <div class="u-form-password u-form-group u-form-partition-factor-2 u-form-group-9">
                       <label for="text-1838" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Ingrese una Contraseña" id="text-1838" name="text-1" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <input type="text" placeholder="Ingrese una Contraseña" id="text-1838" name="contra" value="${user.contrasena}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
                     </div>
-                    <div class="u-form-group u-form-partition-factor-2 u-form-group-10">
+                    <div class="u-form-password u-form-group u-form-partition-factor-2 u-form-group-10">
                       <label for="text-211a" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Confirme su Contraseña" id="text-211a" name="text-2" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <input type="text" placeholder="Confirme su Contraseña" id="text-211a" name="confirma" value="${user.confirm}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
                     </div>
                     <div class="u-form-agree u-form-group u-form-group-11">
                       <input type="checkbox" id="agree-925e" name="agree" class="u-agree-checkbox" required="">
@@ -129,14 +131,11 @@
                     <div class="u-form-group u-form-submit u-form-group-12">
                       <a href="#" class="u-border-2 u-border-white u-btn u-btn-submit u-button-style u-none u-text-body-alt-color u-text-hover-white u-btn-2">continuar<br>
                       </a>
-                      <input type="submit" value="submit" class="u-form-control-hidden u-grey-5" wfd-invisible="true">
+                      <input type="submit" name="action" value="Add" class="u-form-control-hidden u-grey-5" wfd-invisible="true">
                     </div>
-                    <div class="u-form-send-message u-form-send-success" wfd-invisible="true">Thank you! Your message has been sent.</div>
-                    <div class="u-form-send-error u-form-send-message" wfd-invisible="true">Unable to send your message. Please fix errors then try again.</div>
-                    <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true">
                   </form>
                 </div>
-                <p class="u-align-left u-text u-text-2">Ya tengo un usuario&nbsp;<a href="Ingresar1.jsp" data-page-id="87814152" class="u-active-none u-border-1 u-border-white u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-3">Ingresar</a>
+                <p class="u-align-left u-text u-text-2">Ya tengo un usuario&nbsp;<a href="Ingresar.jsp" data-page-id="87814152" class="u-active-none u-border-1 u-border-white u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-3">Ingresar</a>
                 </p>
               </div>
             </div>
