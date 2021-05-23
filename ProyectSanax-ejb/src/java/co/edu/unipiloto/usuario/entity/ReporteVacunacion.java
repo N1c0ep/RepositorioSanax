@@ -61,6 +61,13 @@ public class ReporteVacunacion implements Serializable {
         this.idReporte = idReporte;
         this.brazo = brazo;
     }
+    
+    public ReporteVacunacion(Integer idReporte, String brazo, PersonalVacunacion idPersonalvac, Cita idCita ) {
+        this.idReporte = idReporte;
+        this.brazo = brazo;
+        this.idPersonalvac=idPersonalvac;
+        this.idCita=idCita;
+    }
 
     public Integer getIdReporte() {
         return idReporte;

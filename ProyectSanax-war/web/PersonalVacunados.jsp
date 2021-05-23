@@ -14,17 +14,17 @@
     <body>
         <h1>Periodos de tiempo</h1>
         <h2>Elige periodo de tiempo que quieres consultar</h2>
-        <form method="POST">
+        <form action="./PersonalVacunadosTiempo" method="POST">
             <table>
                 
                 
                  <tr>
                     <td>Fecha inicio </td>
-                    <td><input type="date" name="fecha" value="${asig.fecha}" /></td>
+                    <td><input type="date" name="fechaInicio" value="${asig.fecha}" /></td>
                 </tr>
                 <tr>
                     <td>Fecha fin</td>
-                    <td><input type="date" name="fecha" value="${asig.fecha}" /></td>
+                    <td><input type="date" name="fechaFin" value="${asig.fecha}" /></td>
                 </tr>   
                 <tr>
                     <td colspan="2">

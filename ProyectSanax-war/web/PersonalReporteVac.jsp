@@ -9,9 +9,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Reporte vacunación</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Bienvenido Ingresa los datos de la vacunacion que realisaste</h1>
+        <form action="./PersonalReporteVac" method="POST">
+            <table>
+                <tr>
+                    <td>Brazo</td>
+                <select name="brazo" value="${user.tipoDocumento}">
+                    <option>Izquierdo</option>
+                    <option>Derecho</option>
+                </select>
+                </tr>
+                <tr>
+                    <td>Id_cita</td>
+                    <td><input type="text" name="id_cita" value="${user.nombre}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="action" value="Enviar Reporte" />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
