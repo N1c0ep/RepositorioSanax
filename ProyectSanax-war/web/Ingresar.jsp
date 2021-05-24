@@ -38,7 +38,7 @@
     <meta property="og:url" content="index.html">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-00da"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://estevezpacheco10.wixsite.com/sanax" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
+        <a href="c" class="u-image u-logo u-image-1" data-image-width="280" data-image-height="63">
           <img src="images/Capturadepantalla2021-05-20162406.png" class="u-logo-image u-logo-image-1" data-image-width="291.1113">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -102,9 +102,6 @@
                   </a>
                   <input type="submit" name="action" value="Login" id="btniniciar" class="u-form-control-hidden" wfd-invisible="true">
                 </div>
-                <div class="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
-                <div class="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
-                <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true">
             </div>
             <a href="Recupera.jsp" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-2">Olvidar Contraseña</a>
             <p class="u-align-left u-text u-text-4">Aun no tienes un usuario&nbsp;<a href="Registrarse.jsp" data-page-id="926215482" class="u-active-none u-border-1 u-border-palette-1-base u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-2-base u-btn-3">Registrarse</a>

@@ -83,7 +83,7 @@ public class registroInfo extends HttpServlet {
                     out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseña incorrecta\");\n" + "</script>");
                     out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
                 } else {
-                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/UsuarioVacunacion.jsp\" />");
                 }
             } else if (request.getParameter("lista").equals("Distribuidor de vacunas")) {
                 DistribuidorVacunas dist = distribuidorVacunasFacade.find(Integer.parseInt(user));
@@ -94,7 +94,7 @@ public class registroInfo extends HttpServlet {
                     out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseña incorrecta\");\n" + "</script>");
                     out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
                 } else {
-                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo2.jsp\" />");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/DistribuidorVacuna.jsp\" />");
                 }
             } else if (request.getParameter("lista").equals("Personal de vacunacion")) {
                 PersonalVacunacion per = personalVacunacionFacade.find(Integer.parseInt(user));
@@ -105,7 +105,7 @@ public class registroInfo extends HttpServlet {
                     out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseña incorrecta\");\n" + "</script>");
                     out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/index.html\" />");
                 } else {
-                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo3.jsp\" />");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/PersonalVacunacion.jsp\" />");
                 }
             } else if (request.getParameter("lista").equals("Representante de sitio")) {
                 Administrador ad = administradorFacade.find(Integer.parseInt(user));
