@@ -73,7 +73,7 @@ public class AsignaVac extends HttpServlet {
             if (canti > 0) {
                 if (request.getParameter("action").equals("Asignar")) {
 
-                    int c1 = 0, c2 = 0;
+                    int c1 = 0, c2 = 0, c3=0;
                     VacunaInv vacunainv = null;
                     VacunaInvnac vacuna = vacunaInvnacFacade.find(idvacuna);
                     InventarioVacunas inv;
@@ -81,7 +81,7 @@ public class AsignaVac extends HttpServlet {
                     //Buscar en todo el inventario nacional 
                     for (InventarioVacunas in : sitio.getInventarioVacunasCollection()) {
                             
-                        //Si el sitio que ingreso el usuario existe dentro de la tabla sitio
+                        //Si el sitio que ingreso el usuario existe dentro del inventario vacunas
                         if (in.getIdSitio().getIdSitio() == idsitio) {
                             inv = in; //inventarioVacunasFacade.find(in.getIdInventario());
                             
@@ -103,7 +103,8 @@ public class AsignaVac extends HttpServlet {
                                 break;
                             } else {//Si ingreso una cantidad mayor a la que hay disponible
                                 out.print("<script type=\"text/javascript\">\n" + " alert(\"La cantidad que quiere asignar es mas de lo que existe, digite nueva cantidad \");\n" + "</script>");
-                                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AsignacionVac.jsp\" />");     
+                                out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AsignacionVac.jsp\" />");  
+                                c3=1;
                                 break;  
                             }
                         }
@@ -114,7 +115,7 @@ public class AsignaVac extends HttpServlet {
                             inventarioVacunasFacade.create(inv);
                             vacunainv = new VacunaInv(vacuna.getMarca(), vacuna.getLote(), vacuna.getVencimiento(), canti, inv);
                             vacuna.setCantidad(vacuna.getCantidad() - canti);
-                        } else {
+                        } else if(c3==0){
                             out.print("<script type=\"text/javascript\">\n" + " alert(\"La cantidad que quiere asignar es mas de lo que existe, digite nueva cantidad \");\n" + "</script>");
                             out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AsignacionVac.jsp\" />");
                         }
@@ -125,6 +126,10 @@ public class AsignaVac extends HttpServlet {
                     }
                     //Al final edita el invnetario nacional con la cantidad restada
                     vacunaInvnacFacade.edit(vacuna);
+                    out.print("<script type=\"text/javascript\">\n" + " alert(\"La asignación fue exitosa \");\n" + "</script>");
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/AsignacionVac.jsp\" />");
+                }else{
+                    out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo2.jsp\" />");
                 }
             } else {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"La cantidad de vacunas debe ser mayor a 0, digite una nueva cantidad \");\n" + "</script>");

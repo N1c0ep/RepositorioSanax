@@ -6,11 +6,14 @@
 package co.edu.unipiloto.servlet;
 
 import co.edu.unipiloto.usuario.entity.Cita;
+import co.edu.unipiloto.usuario.entity.InventarioVacunas;
 import co.edu.unipiloto.usuario.entity.Sitio;
 import co.edu.unipiloto.usuario.entity.Usuariosnuevos;
+import co.edu.unipiloto.usuario.entity.VacunaInv;
 import co.edu.unipiloto.usuario.session.CitaFacadeLocal;
 import co.edu.unipiloto.usuario.session.SitioFacadeLocal;
 import co.edu.unipiloto.usuario.session.UsuariosnuevosFacadeLocal;
+import co.edu.unipiloto.usuario.session.VacunaInvFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -28,6 +31,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ConsuEstVac", urlPatterns = {"/ConsuEstVac"})
 public class ConsuEstVac extends HttpServlet {
+
+    @EJB
+    private VacunaInvFacadeLocal vacunaInvFacade;
 
     @EJB
     private SitioFacadeLocal sitioFacade;
@@ -50,64 +56,45 @@ public class ConsuEstVac extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+
+            HttpSession objsession = request.getSession(false);
+            String user = (String) objsession.getAttribute("id1");
+
             
-           HttpSession objsession = request.getSession(false);
-           
+            int idsitio = Integer.parseInt(request.getParameter("sitiosVac"));
      
-           
+            int can=0;
             
-            String action = request.getParameter("action");
-            if (request.getParameter("action").equals("Buscar")){
-                String citaidStr = request.getParameter("sitio");
-                int aux=Integer.parseInt(citaidStr);
-
+            if (request.getParameter("action").equals("Consultar")) {
+                ArrayList<Integer> col = new ArrayList<Integer>();
+                String marc="";
+                for (VacunaInv in : vacunaInvFacade.findAll()) {
+                    if (in.getIdInventario().getIdSitio().getIdSitio() == idsitio) {                                                                    
+                        can+=in.getCantidad();
+                        marc+=in.getDistribuidor() + in.getCantidad() + "\n";
+                    }                  
+                }
+                col.add(can);
                 
-                Integer citaid = 0;
-            
-         
-                Sitio sitio= null;
-               
-                      for (Sitio c : sitioFacade.findAll()) {
-                                if (c.getIdSitio()==aux) {
-                                  sitio =c;  
-
-                                }
-                    }
-                    request.setAttribute("rows", sitio);
-                    request.getRequestDispatcher("ConsuEstVac.jsp").forward(request, response);
-           
+                
+                //System.out.println(va.getCantidad()+ "//////////////////////////////////////");
+//                if (sit != null) {
+                request.setAttribute("cantidad", col);
+                
+                request.getRequestDispatcher("ConsultarEstVac.jsp").forward(request, response);
+//                } else {
+//                    out.print("<script type=\"text/javascript\">\n" + " alert(\"El sitio no existe \");\n" + "</script>");
+//                }/// ESTADO ACTUAL DE PRODUCTOS DE LA CALIDAD EN COMIDA PARA MASCOTAS
             }
-            
-            
+//<% VacunaInv vacun = (VacunaInv) request.getAttribute("cantidad");%>
+//            <table>
+//                <tr>
+//                    <td>Cantidad:</td>
+//                    <td><input type="text" size="20" name="canti" value="<%= vacun.getIdVacuna()   %>"></td>
+//                </tr>
+//            </table>
+        }
     }
-    }
-    public void mostrarMenu(PrintWriter out){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet userInfo</title>");           
-            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/menuInfo.jsp\" />");
-            out.println("</head>");
-            out.println("<body>");
-            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
-            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
-            out.println("</body>");
-            out.println("</html>");
-  }
-    
-     public void mostrarMenu2(PrintWriter out){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet userInfo</title>");           
-            out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/CancelarInfo.jsp\" />");
-            out.println("</head>");
-            out.println("<body>");
-            //out.println("<h1>Servlet userInfo at " + request.getContextPath() + "</h1>");
-            //out.println("<h1>Ha sido registrado con exito, felicitaciones<h1/>");
-            out.println("</body>");
-            out.println("</html>");
-  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

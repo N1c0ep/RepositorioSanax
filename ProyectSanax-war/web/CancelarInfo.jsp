@@ -8,15 +8,14 @@
 <!DOCTYPE html>
 <html>
     <div class="cabecera">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cancelar cita - SANAX</title>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Cancelar cita - SANAX</title>
         <h1>Cancelar Cita</h1>
         <link rel="stylesheet" href="css/cancelarInfo.css">
-    </head>
+        </head>
     </div>
-    <body>
-        
+    <body>       
         <form action="./CancCitaInfo" method="POST">
             <table>
                 <tr>

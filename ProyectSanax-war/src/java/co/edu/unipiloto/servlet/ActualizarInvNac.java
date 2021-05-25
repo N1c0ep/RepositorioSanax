@@ -73,19 +73,14 @@ public class ActualizarInvNac extends HttpServlet {
             String marca = request.getParameter("marca");
             VacunaInvnac lol = null;
             VacunaInvnac lol2=null;
-
+            int c1=0;
+            
             if (cant <= 0) {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"No se puede agregar esa cantidad \");\n" + "</script>");
                 out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/ActualizarInvNac.jsp\" />");
             } else {
                 if (request.getParameter("action").equals("Agregar")) {
                     for (VacunaInvnac c : vacunaInvnacFacade.findAll()) {
-                        for (VacunaInvnac inv : vacunaInvnacFacade.findAll()) {
-                            if (inv.getVencimiento().equals(venci)) {
-                              lol2=inv;
-                              break;
-                            }
-                        }
                         if (marca.equals("Pfizer") && c.getMarca().equals("Pfizer")) {
                             if (lote !=(c.getLote()) || !venci.equals(c.getVencimiento())) {                               
                                 VacunaInvnac vac = new VacunaInvnac(marca, cant, venci, lote,  inventarioNacionalFacade.find(1));

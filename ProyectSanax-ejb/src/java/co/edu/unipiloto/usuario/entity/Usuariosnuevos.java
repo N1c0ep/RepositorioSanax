@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuariosnuevos.findByDosis", query = "SELECT u FROM Usuariosnuevos u WHERE u.dosis = :dosis")})
 public class Usuariosnuevos implements Serializable {
 
+    @Column(name = "ALEATORIO")
+    private Integer aleatorio;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -210,6 +213,14 @@ public class Usuariosnuevos implements Serializable {
     @Override
     public String toString() {
         return "co.edu.unipiloto.usuario.entity.Usuariosnuevos[ id=" + id + " ]";
+    }
+
+    public Integer getAleatorio() {
+        return aleatorio;
+    }
+
+    public void setAleatorio(Integer aleatorio) {
+        this.aleatorio = aleatorio;
     }
     
 }

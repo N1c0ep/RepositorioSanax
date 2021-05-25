@@ -33,7 +33,7 @@
                         SELECT s.id_sitio, s.sitio
                         FROM SITIO s
                     </sql:query>
-                        
+
                     <select     id="sitios" name="sitiosVac">
                         <option value="0">Elija sitio</option>
                         <c:forEach var="row" items="${sitio.rows}">
@@ -68,10 +68,11 @@
                 <td><input type="text" name="cantidad" value="${vacunas.cantidad}" required /></td>
             </tr>
             <tr>
-                    <td colspan="2">
-                        <input type="submit" name="action" value="Asignar" />
-                    </td>
-                </tr>
+                <td colspan="2">
+                    <input type="submit" name="action" value="Asignar" />
+                    <input type="submit" name="action" value="Menu" />
+                </td>
+            </tr>
         </table>
     </form>
 
