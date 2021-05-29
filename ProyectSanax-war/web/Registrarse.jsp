@@ -115,13 +115,32 @@
                       <label for="phone-1edc" class="u-form-control-hidden u-label u-text-body-alt-color">Teléfono</label>
                       <input type="tel" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="Ingrese su teléfono (por ejemplo, +14155552675)" id="phone-1edc" name="telephone" value="${user.telefono}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
                     </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-8">
+                      <label for="text-8ddb" class="u-form-control-hidden u-label u-text-body-alt-color">Profesión</label>
+                      <input type="text" placeholder="A que se dedica" id="proffe-1edc" name="profesion" value="${user.profesion}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color" required="">
+                    </div>                  
                     <div class="u-form-password u-form-group u-form-partition-factor-2 u-form-group-9">
                       <label for="text-1838" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Ingrese una Contraseña" id="text-1838" name="contra" value="${user.contrasena}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <input type="password" placeholder="Ingrese una Contraseña" id="text-1838" name="contra" value="${user.contrasena}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
                     </div>
                     <div class="u-form-password u-form-group u-form-partition-factor-2 u-form-group-10">
                       <label for="text-211a" class="u-form-control-hidden u-label u-text-body-alt-color"></label>
-                      <input type="text" placeholder="Confirme su Contraseña" id="text-211a" name="confirma" value="${user.confirm}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                      <input type="password" placeholder="Confirme su Contraseña" id="text-211a" name="confirma" value="${user.confirm}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-text-body-alt-color">
+                    </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-8">
+                      <select name="comor" value="${asig.comor}" class="u-text u-text-3 u-black">
+                            <option>Seleccione una comorbilidad</option>
+                            <option>Hipertenso</option>
+                            <option>Diabetes</option>
+                            <option>Insuficiencia renal</option>
+                            <option>VIH</option>
+                            <option>Cancer</option>
+                            <option>Tuberculosis</option>
+                            <option>EPOC</option>
+                            <option>ASMA</option>
+                            <option>Obesidad</option>
+                            <option>Necesita transplante de organos</option>
+                        </select>
                     </div>
                     <div class="u-form-agree u-form-group u-form-group-11">
                       <input type="checkbox" id="agree-925e" name="agree" class="u-agree-checkbox" required="">

@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,25 +60,57 @@ public class userInfo extends HttpServlet {
             String correo = request.getParameter("email");
             String telefonoStr = request.getParameter("telephone");
             String Fechanacimiento = request.getParameter("birth");
+            String año = Fechanacimiento.replaceAll("/", "-");
             String contrasena = request.getParameter("contra");
             String confirmacion = request.getParameter("confirma");
             String tipo = request.getParameter("tipo");
+            String comorbilidad = request.getParameter("comor");
+            String prof = request.getParameter("profesion");
             DateFormat fechaHora = new SimpleDateFormat("yyyy/MM/dd");
             convertido = fechaHora.parse(Fechanacimiento);
             int dosis = 0;
+            int age = Period.between(LocalDate.parse(año, DateTimeFormatter.ofPattern("y-M-d")), LocalDate.now()).getYears();
             String idStr = request.getParameter("id");
             Integer id = 0;
-            
+
             if (idStr != null && !idStr.equals("")) {
                 id = Integer.parseInt(idStr);
             }
-            
+
             if (!contrasena.equals(confirmacion)) {
                 out.print("<script type=\"text/javascript\">\n" + " alert(\"Contraseñas no coinciden\");\n" + "</script>");
                 out.println("<meta http-equiv=\"refresh\" content=\"0; url=http://localhost:8080/ProyectSanax-war/Registrarse.jsp\" />");
-            } else {
-                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis);
-                
+            } else if (age >= 80 || prof.equals("Doctor") || prof.equals("Medico") || prof.equals("Enfermero") || prof.equals("Enfermera") || prof.equals("Auxiliares de enfermeria") || prof.equals("Personal de vacunacion")) {
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis, prof, "Fase 1, etapa 1");
+
+                if (request.getParameter("action").equals("Add")) {
+                    usuariosnuevosFacade.create(user);
+                    mostrarMenu(out);
+                }
+            } else if ((age <= 79 && age >= 60) || prof.equals("Medico interno") || prof.equals("Estudiante de medicina")) {
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis, prof, "Fase 1, etapa 2");
+
+                if (request.getParameter("action").equals("Add")) {
+                    usuariosnuevosFacade.create(user);
+                    mostrarMenu(out);
+                }
+            } else if (((age <= 59 && age >= 16) && (prof.equals("Docente") || prof.equals("ICBF") || prof.equals("Fuerza militar") || prof.equals("Policia"))) && (comorbilidad.equals("Hipertenso") || comorbilidad.equals("Diabetes") || comorbilidad.equals("Insuficiencia renal") || comorbilidad.equals("VIH") || comorbilidad.equals("Cancer") || comorbilidad.equals("Tuberculosis") || comorbilidad.equals("EPOC") || comorbilidad.equals("ASMA") || comorbilidad.equals("Obesidad") || comorbilidad.equals("Necesita transplante de organos"))) {
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis, prof, "Fase 1, etapa 3");
+
+                if (request.getParameter("action").equals("Add")) {
+                    usuariosnuevosFacade.create(user);
+                    mostrarMenu(out);
+                }
+            } else if ((age <= 59 && age >= 16) && ((prof.equals("Bombero") || prof.equals("Vagabundo")) && (comorbilidad.equals("Hipertenso") || comorbilidad.equals("Diabetes") || comorbilidad.equals("Insuficiencia renal") || comorbilidad.equals("VIH") || comorbilidad.equals("Cancer") || comorbilidad.equals("Tuberculosis") || comorbilidad.equals("EPOC") || comorbilidad.equals("ASMA") || comorbilidad.equals("Obesidad") || comorbilidad.equals("Necesita transplante de organos")))) {
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis, prof, "Fase 1, etapa 4");
+
+                if (request.getParameter("action").equals("Add")) {
+                    usuariosnuevosFacade.create(user);
+                    mostrarMenu(out);
+                }
+            } else if (age <= 59 && age >= 16 && comorbilidad.equals("Ninguna")) {
+                user = new Usuariosnuevos(id, firstName, lastName, correo, convertido, localidad, telefonoStr, contrasena, tipo, direccion, dosis, prof, "Fase 1, etapa 5");
+
                 if (request.getParameter("action").equals("Add")) {
                     usuariosnuevosFacade.create(user);
                     mostrarMenu(out);

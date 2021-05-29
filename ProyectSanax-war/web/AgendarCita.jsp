@@ -73,14 +73,14 @@
               <div class="u-layout-row">
                 <div class="u-container-style u-layout-cell u-left-cell u-size-60 u-white u-layout-cell-1">
                   <div class="u-container-layout u-container-layout-1">
-                    <p class="u-text u-text-1">Ingresa por favor la fecha y hora en que la dispongas para atender la cita, asi mismo verifica la fase de tu estado de vacunacion.</p>
+                    <p class="u-text u-text-1">Ingresa por favor la fecha y hora en que la dispongas para atender la cita, asi mismo verifica la dosis a aplicar.</p>
                     <div class="u-form u-form-1">
                       <form action="./citaInfo" method="POST">
                         <div class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 0;" >
                         <div  class="u-form-date u-form-group u-form-group-1">
                         <select name="fase" value="${asig.fase}" class="u-text u-text-3 u-black">
-                            <option>Fase 1</option>
-                            <option>Fase 2</option>
+                            <option>Vacunación 1</option>
+                            <option>Vacunación 2</option>
                         </select>
                         </div>
                         <div class="u-form-date u-form-group u-form-group-1">
